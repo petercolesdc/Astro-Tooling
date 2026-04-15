@@ -7,7 +7,8 @@ import BlockStandard from '../components/blocks/textStandard.astro';
 
 // Assets
 import BgSVG from '../assets/svg/DotMap.svg';
-import US_East from "../assets/svg/map-US-east.svg";
+import US_East from "../assets/images/map-US-east.png";
+import Europe from "../assets/images/europe.png";
 
 // Props
 const stage = 3;
@@ -16,7 +17,7 @@ const ranges = [
   { label: "US Central", icon: US_East },
   { label: "US West", icon: US_East },
   { label: "Canada", icon: US_East },
-  { label: "Europe", icon: US_East },
+  { label: "Europe", icon: Europe },
   { label: "India", icon: US_East },
   { label: "Mexico", icon: US_East },
   { label: "Latin America", icon: US_East },
@@ -50,4 +51,4 @@ const ranges = [
 	
 </Layout>
 
-<script type="module" src="/src/scripts/mapGlow.js"></script>
+<script type="module" src="/scripts/mapGlow.js"></script>
