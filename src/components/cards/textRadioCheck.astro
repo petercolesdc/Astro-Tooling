@@ -1,0 +1,19 @@
+---
+const { label = "Text goes here" } = Astro.props;
+---
+
+<label class="flex flex-col size-36 shrink-0 cursor-pointer">
+    <input type="radio" name="options" class="peer sr-only" />
+    <div class="p-[2px] flex flex-col w-full h-full items-center justify-center rounded-sm
+                bg-linear-120 from-white/20 to-white/20 text-neutral-300 transition-all duration-500
+                peer-checked:from-aqua 
+                peer-checked:via-purple-100 
+                peer-checked:to-blue-100
+                peer-checked:text-white
+                peer-focus-visible:ring-2 
+                peer-focus-visible:ring-white 
+                peer-focus-visible:ring-offset-1"
+    >
+        <span class="flex h-full w-full items-center justify-center bg-black text-md font-bold p-4">{label}</span>
+    </div>
+</label>

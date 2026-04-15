@@ -1,0 +1,116 @@
+/******************************************
+Base extensions
+*******************************************/
+
+html {
+  text-rendering: optimizeLegibility;
+  font-optical-sizing: auto;
+  font-kerning: normal;
+  font-synthesis: none;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: var(--leading-normal);
+  @media (min-resolution: 2dppx) {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: auto;
+  }
+  @apply font-sans
+	  text-neutral-900
+	  bg-white
+	  dark:bg-black
+	  dark:text-white;
+}
+
+/******************************************
+House keeping
+*******************************************/
+
+p:empty,
+li:empty,
+ul:empty,
+ol:empty,
+a:empty,
+br {
+   display: none;
+}
+
+i,em,cite {
+  @apply
+    not-italic
+}
+
+b, strong {
+  font-weight: var(--font-weight-bold);
+}
+
+/* Remove safari marker on summary */
+summary::-webkit-details-marker {
+  display: none;
+}
+
+
+/******************************************
+Scrollbar controller
+*******************************************/
+
+.scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-neutral-400) transparent;
+  &::-webkit-scrollbar-thumb {
+    @apply
+    rounded-full
+    bg-neutral-400
+    dark:bg-neutral-700
+    rounded-full;
+  }
+}
+
+.no-scroll {
+  @apply
+    overflow-hidden;
+}
+
+.scrollbar-hidden {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/******************************************
+Text links
+*******************************************/
+
+.text-link {
+  @apply
+    text-inherit
+    transition-colors
+    duration-200
+    ease-in-out
+    underline
+    underline-offset-2
+    decoration-solid
+    hover:text-violet
+    focus:text-violet
+    focus:rounded-xs
+    focus-visible:outline-2 
+    focus-visible:outline-offset-1
+    focus-visible:outline-violet
+    focus:no-underline
+    dark:hover:text-violet-100
+    dark:focus:text-violet-100
+    dark:focus:outline-violet-100
+    group-hover:text-violet
+    group-focus:no-underline
+    dark:group-hover:text-violet-100
+}
+
+.text-link--strong {
+  @apply
+    text-red
+    dark:text-maroon-100;
+}
+
+.text-link[rel*="external"]::after {
+  content: '↗';
+  @apply 
+    inline-block 
+    ms-0.5;
+}

@@ -1,0 +1,52 @@
+---
+import { Image } from "astro:assets";
+
+type Props = {
+  src: ImageMetadata;
+  alt: string;
+  widths?: number[];
+  sizes?: string;
+  format?: "webp" | "avif";
+  layout?: "constrained" | "full-width" | "fixed" | "none";
+  aspect?: string;
+  priority?: boolean;
+  position?:
+    | "center"
+    | "top"
+    | "bottom"
+    | "left"
+    | "right"
+    | "top-left"
+    | "top-right"
+    | "bottom-left"
+    | "bottom-right";
+  class?: string;
+};
+
+const {
+  src,
+  alt,
+  widths = [280, 560, 720, 1200, src.width],
+  // (max-width: 280px) 240px, (max-width: 720px) 560px, (max-width: 1600px) 900px, 100%
+  sizes = "",
+  aspect = "",
+  priority = false,
+  position = "center",
+  format = "avif",
+  layout = "constrained",
+  class: className = "",
+} = Astro.props;
+---
+
+<Image
+  {src}
+  {alt}
+  {widths}
+  sizes={sizes || undefined}
+  priority={priority}
+  position={position || undefined}
+  format={format}
+  data-astro-image={layout}
+  data-astro-image-aspect={aspect || undefined}
+  class={className}
+/>

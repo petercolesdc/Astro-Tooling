@@ -1,0 +1,173 @@
+/******************************************
+Button definitions
+*******************************************/
+
+.button {
+    @apply
+    flex 
+    items-center
+    justify-center 
+    px-3.5 
+    h-11
+    rounded-sm 
+    max-w-max
+    gap-3
+    delay-100
+    transition-colors
+    duration-300 
+    border-2 
+    ease-in-out
+    cursor-pointer
+    focus-visible:outline-2 
+    focus-visible:outline-offset-2
+    focus-visible:outline-violet
+    dark:focus-visible:outline-violet-100;
+    &[disabled] {
+        @apply 
+        cursor-not-allowed;
+    }
+}
+
+.button__label {
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--leading-none);
+}
+
+/******************************************
+Button styles
+*******************************************/
+
+.button--primary {
+    @apply
+    bg-black 
+    text-white
+    border-black
+    dark:bg-white
+    dark:text-black
+    dark:border-white;
+    &:not([disabled]):hover {
+        @apply
+        text-black
+        bg-white
+        dark:text-white
+        dark:bg-black;
+    }
+    &:not([disabled]):focus {
+        @apply
+        text-black
+        bg-white
+        dark:text-white
+        dark:bg-black;
+    }
+    &[disabled] {
+        @apply
+        bg-neutral-200
+        border-neutral-200
+        text-neutral-600 
+        dark:bg-neutral-800
+        dark:border-neutral-800;
+    }
+}
+
+.button--secondary {
+    @apply
+    bg-transparent 
+    text-black
+    border-black
+    dark:text-white
+    dark:border-white;
+    &:not([disabled]):hover {
+        @apply
+        bg-linear-88
+        from-blue-100
+        via-violet-100
+        to-orange-100
+        dark:text-black;
+    }
+    &:not([disabled]):focus {
+        @apply
+        bg-linear-88
+        from-blue-100
+        via-violet-100
+        to-orange-100
+        dark:text-black;
+    }
+    &[disabled] {
+        @apply
+        bg-neutral-100
+        border-neutral-300
+        text-neutral-500
+        dark:bg-neutral-900
+        dark:border-neutral-800 
+        dark:text-neutral-600;
+    }
+}
+
+.button--secondary {
+    @apply
+        transition-none;
+}
+
+/******************************************
+Button icons
+*******************************************/
+
+.button:has(.button__icon) {
+    @apply
+    flex-row
+    items-center
+    text-start
+    gap-2
+    pe-2.5;
+}
+
+.button__icon {
+    line-height: inherit;
+    width: 1em;
+    height: 1em;
+    @apply
+    flex
+    place-items-center
+    place-content-center;
+}
+
+.button__icon svg {
+    width: 1em;
+    height: 1em;
+    color: currentColor;
+}
+
+/* Move the icon to the start position */
+.button.button--icon-start {
+    @apply
+    flex-row-reverse
+    pe-3
+    ps-2.5;
+}
+
+
+/******************************************
+Button sizes
+*******************************************/
+
+.button--sm {
+    @apply
+    h-9
+    px-2.5;  
+}
+
+.button--sm .button__label {
+    font-size: var(--text-xs);
+}
+
+.button--sm.button:has(.button__icon) {
+    @apply
+    pe-2;
+}
+
+.button..button--sm.button--icon-start {
+    @apply
+    pe-2.5
+    ps-2;
+}

@@ -1,0 +1,22 @@
+---
+// Formatters
+import { safe, uppercase, slugger } from "../../utls/textFormat";
+
+// Micro components
+import RenderImage from "../../components/images/utl.astro";
+
+// Props
+const { title, text, image, altTag } = Astro.props;
+---
+<article id={slugger(title)} class="space-y-3">
+    <RenderImage 
+        src={image}
+        alt={altTag}  
+        layout="constrained"
+        class="rounded-md"
+    />
+    <header class="space-y-0.5">
+        <h2 class="text-base font-bold">{uppercase(title)}</h2>
+        <p class="text-sm">{safe(text)}</p>
+    </header>
+</article>

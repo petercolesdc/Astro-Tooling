@@ -1,0 +1,39 @@
+/******************************************
+Common typesetting utilities 
+*******************************************/
+
+/* Weights for roles */
+.heading,
+.label {
+   font-weight: var(--font-weight-bold);
+}
+
+/* Common weights for labels */
+.label {
+  line-height: var(--leading-none);
+}
+
+/* Increase weight for smaller headings */
+.heading.text-xs,
+.heading.text-sm,
+.heading.text-reg,
+.heading.text-base,
+.heading.text-md {
+   font-weight: var(--font-weight-extrabold);
+}
+
+/* Tighten up tracking for larger headings */
+.heading[class*="xl"] {
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: var(--tracking-tight);
+}
+
+.heading.text-4xl,
+.heading.text-5xl {
+  letter-spacing: var(--tracking-tight); /* <--- UPDATED */
+}
+
+/* Tracking for upper case text */
+.uppercase {
+  letter-spacing: var(--tracking-wide);
+}

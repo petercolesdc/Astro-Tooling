@@ -1,0 +1,39 @@
+---
+import { siteConfig } from '../../astro.config.mjs';
+
+const { title, metaDescription, ogImage, canonicalUrl } = Astro.props;
+
+// Use fallback values from siteConfig if not provided
+const pageTitle = title ? `${title} | ${siteConfig.siteTitle}` : siteConfig.siteTitle;
+const description = metaDescription ? `${metaDescription} | ${siteConfig.siteDescription}` : siteConfig.siteDescription;
+const socialImage = ogImage || siteConfig.ogImage;
+const canonical = canonicalUrl || siteConfig.siteUrl;
+---
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>{pageTitle}</title>
+
+    <!-- Webfonts -->
+    <link rel="stylesheet" href="https://tailwind-blueprint.vercel.app/styles/webfonts.css">
+    
+    <!-- Meta Description & Keywords -->
+    <meta name="description" content={description} />
+    <meta name="author" content={siteConfig.author.name} />
+    <meta name="language" content={siteConfig.language} />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonical} />
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href={siteConfig.siteIcon} />
+
+    <style>
+        html[data-theme='dark'] {
+            color-scheme: dark;
+        }
+    </style>
+</head>
