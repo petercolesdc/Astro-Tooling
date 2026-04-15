@@ -2,22 +2,16 @@
 import '../styles/global.css' 
 import BaseHead from '../components/head.astro';
 import Navbar from '../components/scaffold/navBar.astro';
-const { title, metaDescription, stage, navigation, showStage, contentAlign='' } = Astro.props;
+const { pageID, title, metaDescription, stage, navigation, showStage, contentAlign='' } = Astro.props;
 ---
-<html data-theme="dark" lang="en">
-    <head>
-        <BaseHead title={title} metaDescription={metaDescription}/>
-    </head>
-    <body class="bg-black bg-linear-120 from-blue/20 via-purple/20 to-red/20 text-white min-h-dvh">
+<html data-theme="dark" lang="en" class={pageID}>
+    <BaseHead title={title} metaDescription={metaDescription}/>
+    <body class="bg-black bg-linear-120 from-blue/30 via-purple/30 to-red/30 text-white min-h-dvh">
         <div id="content" class="relative overflow-x-clip">
 
             <main class="relative z-10 mx-auto max-w-[var(--content)]">
-                <div class={`space-y-6 min-h-dvh flex flex-col py-3 lg:max-w-4xl xl:py-12 ${contentAlign}`}>
-
-                    <!-- Header and progress -->
+                <div class={`space-y-6 min-h-dvh flex flex-col py-3 lg:max-w-5xl xl:py-6 ${contentAlign}`}>
                     <slot name="header"/>
-
-                    <!-- Content and stages -->
                     <article class="space-y-3 flex flex-col px-8 pt-4 pb-32 md:pt-8">
                         {showStage && (
                             <span class="block pb-3 text-xs uppercase heading text-neutral-500">Stage {stage} of 9</span>
@@ -28,7 +22,7 @@ const { title, metaDescription, stage, navigation, showStage, contentAlign='' } 
             </main>
 
             <!-- Aside graphics -->
-            <aside class="fixed z-0 h-screen bg-black w-1/2 end-0 top-0 mask-radial-[100%_100%] mask-radial-from-0% mask-radial-at-right flex">
+            <aside class="fixed z-0 h-dvh bg-black w-3/4 end-0 top-0 mask-radial-[100%_100%] mask-radial-from-0% mask-radial-at-right flex lg:w-1/2">
                 <slot name="asideGraphic"/>
             </aside>
 

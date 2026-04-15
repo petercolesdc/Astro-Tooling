@@ -1,0 +1,41 @@
+/******************************************
+Logo animation
+*******************************************/
+
+.splash .logo-prime g[class="translate-x-3"] path {
+    opacity: 0;
+    transform: translateY(-40px);
+    animation: dropIn 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    --step: 0.05s;
+    --start-delay: 0.35s;
+}
+
+/* Stagger with base delay */
+.splash .logo-prime g[class="translate-x-3"] path:nth-child(1) { 
+    animation-delay: calc(var(--start-delay) + var(--step) * 1); 
+}
+.splash .logo-prime g[class="translate-x-3"] path:nth-child(2) { 
+    animation-delay: calc(var(--start-delay) + var(--step) * 2); 
+}
+.splash .logo-prime g[class="translate-x-3"] path:nth-child(3) { 
+    animation-delay: calc(var(--start-delay) + var(--step) * 3); 
+}
+.splash .logo-prime g[class="translate-x-3"] path:nth-child(4) { 
+    animation-delay: calc(var(--start-delay) + var(--step) * 4); 
+}
+.splash .logo-prime g[class="translate-x-3"] path:nth-child(5) { 
+    animation-delay: calc(var(--start-delay) + var(--step) * 5); 
+}
+.splash .logo-prime g[class="translate-x-3"] path:nth-child(6) { 
+    animation-delay: calc(var(--start-delay) + var(--step) * 6); 
+}
+.splash .logo-prime g[class="translate-x-3"] path:nth-child(7) { 
+    animation-delay: calc(var(--start-delay) + var(--step) *7); 
+}
+
+@keyframes dropIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

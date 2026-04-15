@@ -1,0 +1,45 @@
+---
+// Layouts and components
+import Layout from '../layouts/basic.astro';
+import Header from '../components/scaffold/headerProgress.astro';
+import CardText from '../components/cards/textRadioCheck.astro';
+import BlockStandard from '../components/blocks/textStandard.astro';
+
+// Assets
+import BgImage from '../assets/images/bg-loops.png';
+
+// Props
+const stage = 2;
+const ranges = ["1-5", "6-15", "16-30", "31-50", "50+"];
+---
+
+<Layout 
+	title="Tooling app UI"
+	metaDescription="Screens for Equinix tools"
+	contentAlign="justify-start"
+	pageID="tool-steps"
+	stage={stage}
+	showStage={true}
+	navigation={{ next: true, previous: true, footer: true, nextUrl: "/tool-2", prevUrl: "/" }} 
+>
+	<Header progress="width: 10%;" slot="header"/>
+
+	<!-- Main content -->
+	<div slot="content" class="space-y-16">
+		<BlockStandard title="How many cloud and SaaS providers does your organization use?">
+			<div slot="blockAfter" class="relative flex flex-row flex-nowrap gap-4 py-6 px-8 -translate-x-8 w-[calc(100%_+_var(--spacing)_*_8)] scrollbar overflow-x-auto mask-linear-90 mask-linear-from-99% mask-linear-to-100%">
+				{ranges.map((label) => (
+  					<CardText key={label} label={label} />
+				))}
+			</div>
+		</BlockStandard>
+	</div>
+
+	<!-- Page graphic -->
+	<img slot="asideGraphic"
+		class="object-cover opacity-50 w-full mix-blend-lighten" 
+		src={BgImage.src}
+		alt=""
+		role="presentation"
+    >
+</Layout>

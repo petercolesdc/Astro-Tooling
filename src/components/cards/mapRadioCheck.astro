@@ -1,11 +1,11 @@
 ---
 // Formatters
 import { safe, uppercase, lowercase, slugger } from "../../utls/textFormat";
-// Props
-const { label = "Text goes here", type="radio" } = Astro.props;
----
 
-<label class="flex flex-col size-30 shrink-0 cursor-pointer lg:size-36">
+// Props
+const { label = "Text goes here", type="checkbox", icon: Icon } = Astro.props;
+---
+<label class="flex flex-col size-36 shrink-0 cursor-pointer lg:size-46">
     <input value={slugger(label)} id={`value-${slugger(label)}`} type={type} name="options" class="peer sr-only" />
     <div class="p-[2px] flex flex-col w-full h-full items-center justify-center rounded-sm
                 bg-linear-120 from-white/20 to-white/20 text-neutral-500 transition-all duration-500
@@ -13,10 +13,15 @@ const { label = "Text goes here", type="radio" } = Astro.props;
                 peer-checked:via-purple-100 
                 peer-checked:to-blue-100
                 peer-checked:text-white
+                grayscale-100 
+                peer-checked:grayscale-0
                 peer-focus-visible:ring-2 
                 peer-focus-visible:ring-white 
                 peer-focus-visible:ring-offset-1"
     >
-        <span class="flex flex-col h-full w-full items-center justify-center text-center bg-black text-md font-bold p-4">{label}</span>
+        <span class="flex flex-col h-full items-between gap-6 justify-center text-center bg-black text-sm font-bold p-4">
+            {Icon && <Icon class="w-full h-full p-3" />}
+            <span>{label}</span>
+        </span>
     </div>
 </label>

@@ -1,28 +1,28 @@
 ---
 import { ArrowRight, ArrowLeft } from '@lucide/astro';
 const { navigation } = Astro.props;
-const { next = true, previous = true, footer = true } = navigation;
+const { next = true, previous = true, footer = true, nextUrl, prevUrl } = navigation;
 ---
 {footer && (
  <footer class="max-w-[calc(var(--content)_+_var(--spacing)_*_12)] mx-auto fixed z-10 start-0 end-0 bottom-3 w-full px-4 md:px-8 md:bottom-6">
-    <nav role="navigation" class="bg-black/70 border-2 border-white/5 backdrop-blur-sm px-3 py-4 rounded-lg flex flex-row-reverse justify-between items-center md:px-6">
+    <nav role="navigation" class="bg-black/70 border-2 border-white/5 backdrop-blur-sm px-3 py-4 rounded-lg flex flex-row-reverse justify-between items-center shadow-(--glow) md:px-6">
 
     {next && (
-        <button class="button button--primary">
-        <span class="button__label">Next</span>
-        <span class="button__icon">
-            <ArrowRight size={16} stroke-width={2} />
-        </span>
-        </button>
+        <a href={navigation.nextUrl} class="button button--primary">
+            <span class="button__label">Next</span>
+            <span class="button__icon">
+                <ArrowRight size={16} stroke-width={2} />
+            </span>
+        </a>
     )}
 
     {previous && (
-        <button class="button button--secondary button--icon-start">
-        <span class="button__label">Previous</span>
-        <span class="button__icon">
-            <ArrowLeft size={16} stroke-width={2} />
-        </span>
-        </button>
+        <a href={navigation.prevUrl} class="button button--secondary button--icon-start">
+            <span class="button__label">Previous</span>
+            <span class="button__icon">
+                <ArrowLeft size={16} stroke-width={2} />
+            </span>
+        </a>
     )}
     </nav>
 </footer>

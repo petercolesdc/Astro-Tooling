@@ -1,14 +1,11 @@
 ---
-// Formatters
-import { safe, uppercase, lowercase, slugger } from "../utls/textFormat";
-
 // Layouts and components
 import Layout from '../layouts/basic.astro';
-import Header from '../components/scaffold/headerProgress.astro';
-import CardText from '../components/cards/textRadioCheck.astro';
+import EQXLogo from '../assets/svg/logo.svg';
 
 // Assets
-import BgImage from '../assets/images/bg-blocks.png';
+import BgImage from '../assets/images/bg-loops.png';
+import { ArrowRight, CircleCheck } from '@lucide/astro';
 
 // Props
 const stage = 1;
@@ -17,37 +14,50 @@ const stage = 1;
 <Layout 
 	title="Tooling app UI"
 	metaDescription="Screens for Equinix tools"
-	contentAlign="justify-start"
+	contentAlign="justify-center"
+	pageID="splash"
 	stage={stage}
-	showStage={true}
-	navigation={{ next: true, previous: true, footer: true }}
+	showStage={false}
+	navigation={{ next: true, previous: false, footer: false, nextUrl: "/tool-1", prevUrl: "" }} 
 >
-	<Header slot="header"/>
 
 	<!-- Main content -->
 	<div slot="content" class="space-y-16">
-		<section class="space-y-3 max-w-[56ch]">
-			<h1 class="text-md heading">How many cloud and SaaS providers does your organization use?</h1>
-			<div class="space-y-6 text-pretty [&_p]:text-neutral-200 [&_p]:text-sm [&_p]:leading-relaxed">
-				<p>Our comprehensive security features and compliance programs meet rigorous industry standards. That's why we are trusted by over 5,000 global organizations to protect their equipment and data.</p>
+		<section class="space-y-4">
+			<div class="text-white flex flex-col justify-center overflow-clip w-[145px] pb-2">
+            	<EQXLogo/>
+        	</div>
+			<h1 class="text-xl heading max-w-[62ch] md:text-2xl">Cloud Connectivity Advisor</h1>
+			<div class="space-y-6 max-w-[58ch] [&_p]:text-pretty [&_p]:text-neutral-200 [&_p]:text-sm [&_p]:leading-relaxed">
+				<p>Ready to explore your interconnected digital infrastructure strategy? This interactive guide provides a quick and effective way to craft a customized strategy tailored to your organization's unique needs.</p>
+				<ul class="space-y-4 [&_li]:text-pretty [&_li]:text-neutral-200 [&_li]:text-sm [&_li]:leading-relaxed">
+					<li class="flex flex-row items-start gap-3">
+						<CircleCheck class="text-purple-100 shrink-0" size={24} stroke-width={2} />
+						Complete in less than 10 minutes
+					</li>
+					<li class="flex flex-row items-start gap-3">
+						<CircleCheck class="text-purple-100 shrink-0" size={24} stroke-width={2} />
+						Downloadable strategy design recommendations
+					</li>
+					<li class="flex flex-row items-start gap-3">
+						<CircleCheck class="text-purple-100 shrink-0" size={24} stroke-width={2} />
+						Based on 1,643 senior IT leaders
+					</li>
+					<li class="flex flex-row items-start gap-3">
+						<CircleCheck class="text-purple-100 shrink-0" size={24} stroke-width={2} />
+						Address hybrid multicloud challenges
+					</li>
+				</ul>
 			</div>
 		</section>
-		<section class="space-y-3 max-w-[56ch]">
-			<h2 class="text-xs uppercase heading text-neutral-500">Sub question here</h2>
-			<div class="space-y-6 text-pretty [&_p]:text-neutral-200 [&_p]:text-sm [&_p]:leading-relaxed">
-				<p>Our comprehensive security features and compliance programs meet rigorous industry standards. That's why we are trusted by over 5,000 global organizations to protect their equipment and data.</p>
-			</div>
-		</section>
-		<section class="relative">
-			<h2 class="text-xs uppercase heading text-neutral-500">Card deck overscoller</h2>
-			<div class="relative flex flex-row flex-nowrap gap-4 py-6 px-8 -translate-x-8 w-[calc(100%_+_var(--spacing)_*_8)] scrollbar overflow-x-auto mask-linear-90 mask-linear-from-95% mask-linear-to-100%">
-				<CardText label="1-5" />
-				<CardText label="6-15" />
-				<CardText label="16-30" />
-				<CardText label="31-50" />
-				<CardText label="50&plus;" />
-			</div>
-		</section>
+		<a href="/tool-1" class="button button--primary">
+			<span class="button__label">Lets go!</span>
+			<span class="button__icon">
+				<ArrowRight size={16} stroke-width={2} />
+			</span>
+		</a>
+		<p class="absolute bottom-10 start-0 px-8 text-xs text-neutral-500 max-w-3xl">Note: This navigator is specifically developed for enterprise organizations. IT service providers, networks or other non-enterprise entities may not receive the most relevant insights.
+		</p>
 	</div>
 
 	<!-- Page graphic -->

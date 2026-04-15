@@ -166,7 +166,7 @@ Button sizes
     pe-2;
 }
 
-.button..button--sm.button--icon-start {
+.button.button--sm.button--icon-start {
     @apply
     pe-2.5
     ps-2;
