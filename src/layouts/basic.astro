@@ -6,7 +6,7 @@ const { pageID, title, metaDescription, stage, navigation, showStage, contentAli
 ---
 <html data-theme="dark" lang="en" class={pageID}>
     <BaseHead title={title} metaDescription={metaDescription}/>
-    <body class="bg-black bg-linear-120 from-blue/30 via-purple/30 to-maroon/30 text-white min-h-dvh">
+    <body class="bg-black bg-linear-120 from-purple-900/30 to-red-900/20 text-white">
         <div id="content" class="relative overflow-x-clip">
 
             <main class="relative z-10 mx-auto max-w-[var(--content)]">
@@ -22,7 +22,7 @@ const { pageID, title, metaDescription, stage, navigation, showStage, contentAli
             </main>
 
             <!-- Aside graphics -->
-            <aside class="fixed z-0 h-dvh bg-black w-3/4 end-0 top-0 mask-radial-[100%_100%] mask-radial-from-0% mask-radial-at-right flex lg:w-1/2">
+            <aside class="fixed will-change-transform transform-gpu z-0 h-dvh flex-row w-1/2 end-0 top-0 mask-radial-[100%_100%] mask-radial-from-5% mask-radial-at-right hidden lg:flex">
                 <slot name="asideGraphic"/>
             </aside>
 

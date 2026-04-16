@@ -4,8 +4,7 @@ import { safe, uppercase, lowercase, slugger } from "../../utls/textFormat";
 // Props
 const { label = "Text goes here", type="radio" } = Astro.props;
 ---
-
-<label class="flex flex-col size-30 shrink-0 cursor-pointer lg:size-36">
+<label class="flex flex-col size-24 shrink-0 cursor-pointer lg:size-36">
     <input value={slugger(label)} id={`value-${slugger(label)}`} type={type} name="options" class="peer sr-only" />
     <div class="p-[2px] flex flex-col w-full h-full items-center justify-center rounded-sm
                 bg-linear-120 from-white/20 to-white/20 text-neutral-500 transition-all duration-500

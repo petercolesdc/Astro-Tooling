@@ -17,10 +17,10 @@ import LogoOther from "../assets/svg/logo-otherclouds.svg";
 // Props
 const stage = 2;
 const ranges = [
-  { label: "AWS", icon: LogoAWS, size: "max-h-16", nudge: "translate-y-1" },
+  { label: "AWS", icon: LogoAWS, size: "max-h-18", nudge: "translate-y-1" },
   { label: "Azure", icon: LogoAzure, size: "max-h-18", nudge: "-translate-y-1" },
   { label: "Google Cloud", icon: LogoGcloud, size: "max-h-18", nudge: "" },
-  { label: "Oracle Cloud", icon: LogoOracle, size: "max-h-20", nudge: "" },
+  { label: "Oracle Cloud", icon: LogoOracle, size: "max-h-18 scale-105", nudge: "" },
   { label: "Other", icon: LogoOther, size: "max-h-18", nudge: "" },
 ];
 ---
@@ -57,8 +57,7 @@ const ranges = [
 		slot="asideGraphic" 
 		src={BgImage} 
 		priority={true}
-		layout="full-width"
-		class="object-cover w-full mix-blend-lighten opacity-20"
+		class="object-cover w-full h-full opacity-20"
 		alt=""
 	/>
 </Layout>

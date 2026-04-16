@@ -9,7 +9,7 @@ const { next = true, previous = true, footer = true, nextUrl, prevUrl } = naviga
 
     {next && (
         <a href={navigation.nextUrl} class="button button--primary">
-            <span class="button__label">Back</span>
+            <span class="button__label">Continue</span>
             <span class="button__icon">
                 <ArrowRight size={16} stroke-width={2} />
             </span>
@@ -18,7 +18,7 @@ const { next = true, previous = true, footer = true, nextUrl, prevUrl } = naviga
 
     {previous && (
         <a href={navigation.prevUrl} class="button button--secondary button--icon-start">
-            <span class="button__label">Continue</span>
+            <span class="button__label">Back</span>
             <span class="button__icon">
                 <ArrowLeft size={16} stroke-width={2} />
             </span>
