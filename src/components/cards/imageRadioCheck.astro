@@ -3,7 +3,7 @@
 import { safe, uppercase, lowercase, slugger } from "../../utls/textFormat";
 
 // Props
-const { label = "Text goes here", type="checkbox", icon: Icon, iconNudge, iconSize="h-24" } = Astro.props;
+const { label = "Text goes here", type="checkbox", icon: Icon, iconNudge="", iconSize="h-24" } = Astro.props;
 ---
 <label class="group flex flex-col w-36 shrink-0 cursor-pointer md:w-46">
     <input value={slugger(label)} id={`value-${slugger(label)}`} type={type} name="options" class="peer sr-only" />
@@ -21,7 +21,7 @@ const { label = "Text goes here", type="checkbox", icon: Icon, iconNudge, iconSi
     >
         <div class="flex flex-col h-full w-full items-between gap-3 justify-center text-center bg-black text-sm font-bold p-2 md:px-4 md:py-6">
             {Icon && 
-                <img class={`${iconSize} ${iconNudge} w-auto object-contain p-3 transition-all duration-500 contrast-0 opacity-20 group-has-[:checked]:contrast-100 group-has-[:checked]:opacity-100 `}
+                <img class={`${iconSize} ${iconNudge} w-auto object-contain p-3 transition-all duration-500 contrast-0 opacity-30 group-has-[:checked]:contrast-100 group-has-[:checked]:opacity-100 `}
                     src={Icon.src}
                     alt={label}
                 >

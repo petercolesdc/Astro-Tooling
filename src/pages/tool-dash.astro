@@ -3,11 +3,12 @@
 import Layout from '../layouts/dashboard.astro';
 import Header from '../components/scaffold/headerProgress.astro';
 import Input from '../components/forms/input.astro';
+import Select from '../components/forms/select.astro';
 import CardBasic from '../components/cards/article.astro';
 import CardSummary from '../components/cards/summary.astro';
 
 // Assets
-import BgSVG from '../assets/svg/DotMap.svg';
+import BgImage from '../assets/images/bg-orb.png';
 import LogoAWS from "../assets/svg/logo-aws.svg";
 import LogoAzure from "../assets/svg/logo-azure.svg";
 import LogoGcloud from "../assets/svg/logo-gcloud.svg";
@@ -43,18 +44,22 @@ const chartData = [
 
 	<!-- Main content -->
 	<div slot="content" class="space-y-8 flex flex-col items-start xl:space-y-16 xl:gap-4 xl:flex-row">
+		
 		<aside class="flex flex-col justify-between space-y-8 p-6 bg-linear-120 from-blue/30 via-purple/30 to-red/30 rounded-lg border-2 border-white/20 md:p-8 xl:min-h-[640px] xl:w-1/3 xl:sticky xl:top-6">
 			<div class="space-y-8">
 				<header class="space-y-2">
-					<h1 class="text-lg heading">Get your report</h1>
+					<h2 class="text-lg heading">Get your report</h2>
 					<p class="text-sm text-white leading-normal text-balanced">Access the full report based on the information provided in this assessment.</p>
+					 <a href="/tool-4" class="text-purple-100 underline text-sm hover:text-white focus:text-white">Edit your answers</a>
 				</header>
-				<fieldset class="space-y-6">
+				<fieldset role="group" aria-labelledby="customer-details" class="space-y-6">
+					<legend class="sr-only" id="customer-details">Customer details</legend>
 					<div class="grid grid-cols-2 gap-3">
 						<Input id="given-name" label="Given name"/>
 						<Input id="familiy-name" label="Familiy name"/>
 					</div>
 					<Input id="email" type="email" autocomplete="email" label="Email address"/>
+					<Select id="country" label="Country"/>
 					<Input id="company" label="Company"/>
 					<Input id="role" label="Job title" required={false}/>
 				</fieldset>
@@ -66,6 +71,7 @@ const chartData = [
 				</span>
 			</button>
 		</aside>
+
 		<div class="space-y-4 pb-8 xl:pb-16 xl:w-2/3">
 
 			<!-- For one item -->
@@ -125,4 +131,12 @@ const chartData = [
 
 		</div>
 	</div>
+
+	<!-- Page graphic -->
+	<img slot="asideGraphic"
+		class="object-cover opacity-20 w-full mix-blend-lighten" 
+		src={BgImage.src}
+		alt=""
+		role="presentation"
+    >
 </Layout>

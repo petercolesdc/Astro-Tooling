@@ -4,6 +4,7 @@ import Layout from '../layouts/basic.astro';
 import Header from '../components/scaffold/headerProgress.astro';
 import Card from '../components/cards/imageRadioCheck.astro';
 import BlockStandard from '../components/blocks/textStandard.astro';
+import RenderImage from "../components/images/utl.astro";
 
 // Assets
 import BgImage from '../assets/images/bg-orb.png';
@@ -42,7 +43,7 @@ const ranges = [
 		>
 			<div slot="blockAfter" class="pt-12">
 				<h3 id="scroller-label" class="text-xs uppercase heading text-neutral-500">Select all that apply</h3>
-				<div aria-labelledby="scroller-label" class="relative flex flex-row flex-nowrap gap-4 py-6 px-8 -translate-x-8 w-[calc(100%_+_var(--spacing)_*_8)] scrollbar overflow-x-auto mask-linear-90 mask-linear-from-99% mask-linear-to-100%">
+				<div aria-labelledby="scroller-label" class="relative py-6 flex flex-wrap gap-4">
 					{ranges.map((item) => (
 						<Card iconSize={item.size} iconNudge={item.nudge} label={item.label} icon={item.icon} />
 					))}
@@ -50,15 +51,16 @@ const ranges = [
 			</div>
 		</BlockStandard>
 	</div>
-	
+
 	<!-- Page graphic -->
-	<img slot="asideGraphic"
-		class="object-cover w-full mix-blend-lighten opacity-20" 
-		src={BgImage.src}
+	<RenderImage
+		slot="asideGraphic" 
+		src={BgImage} 
+		priority={true}
+		layout="full-width"
+		class="object-cover w-full mix-blend-lighten opacity-20"
 		alt=""
-		role="presentation"
-    >
-	
+	/>
 </Layout>
 
 <script type="module" src="/scripts/mapGlow.js"></script>

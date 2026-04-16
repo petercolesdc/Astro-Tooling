@@ -1,0 +1,67 @@
+---
+// Layouts and components
+import Layout from '../layouts/basic.astro';
+import Header from '../components/scaffold/headerProgress.astro';
+import Card from '../components/cards/radioCheck.astro';
+import BlockStandard from '../components/blocks/textStandard.astro';
+import RenderImage from "../components/images/utl.astro";
+
+// Assets
+import BgImage from '../assets/images/bg-orb.png';
+
+// Props
+const stage = 4;
+const ranges = [
+	"Financial services", 
+	"Healthcare & Life sciences", 
+	"Technology services", 
+	"Public sector & Government", 
+	"Manufacturing & Industrial",
+	"Retail & Consumer services",
+	"Media & Entertainment",
+	"Energy & Utilities",
+	"Cloud & IT services",
+	"Network services",
+	"Something else",
+];
+---
+<Layout 
+	title="Tooling app UI"
+	metaDescription="Screens for Equinix tools"
+	contentAlign="justify-start"
+	pageID="tool-steps"
+	stage={stage}
+	showStage={true}
+	navigation={{ next: true, previous: true, footer: true, nextUrl: "/tool-dash", prevUrl: "/tool-3" }} 
+>
+	<Header progress="width: 40%;" slot="header"/>
+
+	<!-- Main content -->
+	<div slot="content" class="space-y-16">
+		<BlockStandard 
+			title="What factors are driving your hybrid multicloud approach?"
+			body="This helps us understand the complexity of your current infrastructure to interconnect."
+		>
+			<div slot="blockAfter" class="pt-12">
+				<h3 id="scroller-label" class="text-xs uppercase heading text-neutral-500">Select all that apply</h3>
+				<div aria-labelledby="scroller-label" class="relative py-6 grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+					{ranges.map((label) => (
+						<Card key={label} label={label} />
+					))}
+				</div>
+			</div>
+		</BlockStandard>
+	</div>
+
+	<!-- Page graphic -->
+	<RenderImage
+		slot="asideGraphic" 
+		src={BgImage} 
+		priority={true}
+		layout="full-width"
+		class="object-cover w-full mix-blend-lighten opacity-20"
+		alt=""
+	/>
+</Layout>
+
+<script type="module" src="/scripts/mapGlow.js"></script>

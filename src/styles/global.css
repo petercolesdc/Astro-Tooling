@@ -23,7 +23,6 @@
   --breakpoint-2xl: 1720px;
   --breakpoint-3xl: 2200px;
 
-  /* Color - Moved from import at newer TW does not allow imports here */
   --color-neutral-100: #f2f3f4;
   --color-neutral-200: #e1e3e7;
   --color-neutral-300: #d0d2da;
@@ -125,18 +124,11 @@
   --text-5xl--letter-spacing: var(--tracking-tight);
   --text-5xl--font-weight: var(--font-weight-book);
 
-  /* ------------------------------------ */
-  /* Application specifics and over-rides */
-  /* ------------------------------------ */
-
-  --content: 1500px;
-  --glow: 0 0px 24px rgba(255, 255, 255, 0.05);
-
 }
 
 /* Import base layers below */
-@import "./core/common.css" layer(base);
 @import "./app.css" layer(base);
+@import "./core/common.css" layer(base);
 
 /* Import components below */
 @import "./components/buttons.css" layer(components);

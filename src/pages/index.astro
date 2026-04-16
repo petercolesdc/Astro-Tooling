@@ -2,6 +2,7 @@
 // Layouts and components
 import Layout from '../layouts/basic.astro';
 import EQXLogo from '../assets/svg/logo.svg';
+import RenderImage from "../components/images/utl.astro";
 
 // Assets
 import BgImage from '../assets/images/bg-orb.png';
@@ -51,7 +52,7 @@ const stage = 1;
 			</div>
 		</section>
 		<a href="/tool-1" class="button button--primary">
-			<span class="button__label">Lets go!</span>
+			<span class="button__label">Take assessment</span>
 			<span class="button__icon">
 				<ArrowRight size={16} stroke-width={2} />
 			</span>
@@ -61,10 +62,12 @@ const stage = 1;
 	</div>
 
 	<!-- Page graphic -->
-	<img slot="asideGraphic"
-		class="object-cover w-full mix-blend-lighten opacity-20" 
-		src={BgImage.src}
+	<RenderImage
+		slot="asideGraphic" 
+		src={BgImage} 
+		priority={true}
+		layout="full-width"
+		class="object-cover w-full mix-blend-lighten opacity-20"
 		alt=""
-		role="presentation"
-    >
+	/>
 </Layout>

@@ -1,9 +1,15 @@
 ---
-// Formatters
-import { safe, uppercase, lowercase, slugger } from "../../utls/textFormat";
-
 // Props
-const { label = "Given name", type="text", autocomplete="off", id="text-input", value="", error="Error text here", required=true, showError=false } = Astro.props;
+const { 
+    label = "Given name", 
+    type="text", 
+    autocomplete="off", 
+    id="text-input", 
+    value="", 
+    error="Error text here", 
+    required=true, 
+    showError=false 
+} = Astro.props;
 ---
 <div data-component="form/input" class="relative flex flex-col gap-1.5 w-full">
     <label for={`${id}-input`}  
@@ -31,7 +37,7 @@ const { label = "Given name", type="text", autocomplete="off", id="text-input", 
             class="relative 
                 px-3 
                 h-10 
-                border-1 
+                border
                 text-xs 
                 border-offset 
                 bg-white/5

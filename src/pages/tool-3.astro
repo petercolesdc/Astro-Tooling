@@ -7,8 +7,8 @@ import BlockStandard from '../components/blocks/textStandard.astro';
 
 // Assets
 import BgSVG from '../assets/svg/DotMap.svg';
-import US_East from "../assets/images/map-US-east.png";
-import Europe from "../assets/images/europe.png";
+import US_East from "../assets/svg/map-US-east.svg";
+import Europe from "../assets/svg/map-europe.svg";
 
 // Props
 const stage = 3;
@@ -32,7 +32,7 @@ const ranges = [
 	pageID="tool-steps"
 	stage={stage}
 	showStage={true}
-	navigation={{ next: true, previous: true, footer: true, nextUrl: "/tool-dash", prevUrl: "/tool-2" }} 
+	navigation={{ next: true, previous: true, footer: true, nextUrl: "/tool-4", prevUrl: "/tool-2" }} 
 >
 	<Header progress="width: 30%;" slot="header"/>
 
@@ -40,7 +40,7 @@ const ranges = [
 	<div slot="content" class="space-y-16">
 		<BlockStandard 
 			title="Where are your users located?"
-			body="Rank your top 3 regions based on user concentration."
+			body="Rank your global regions based on user concentration. Higher ranked locations factor more strongly in the final report."
 		>
 			<div slot="blockAfter" class="pt-12">
 				<h3 id="scroller-label" class="text-xs uppercase heading text-neutral-500">Select all that apply</h3>
