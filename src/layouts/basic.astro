@@ -10,7 +10,7 @@ const { pageID, title, metaDescription, stage, navigation, showStage, contentAli
         <div id="content" class="relative overflow-x-clip">
 
             <main class="relative z-10 mx-auto max-w-[var(--content)]">
-                <div class={`space-y-6 min-h-dvh flex flex-col py-3 lg:max-w-5xl xl:py-6 ${contentAlign}`}>
+                <div class={`space-y-6 min-h-dvh flex flex-col ${contentAlign}`}>
                     <slot name="header"/>
                     <article class="space-y-3 flex flex-col px-8 pt-4 pb-32 md:pt-8">
                         {showStage && (

@@ -2,9 +2,14 @@
 import EQXLogo from '../../assets/svg/logo.svg';
 
 // Props
-const { progress="width: 10%;" } = Astro.props;
+const { progress="width: 10%;", sticky=true } = Astro.props;
 ---
-<header class="space-y-6 sticky pt-6 px-8 backdrop-blur-xs z-20 top-0 start-0 w-full">
+<header
+  class:list={[
+    "space-y-6 pt-8 px-8 backdrop-blur-xs z-20 top-0 start-0 w-full",
+    sticky && "sticky"
+  ]}
+>
     <div class="flex flex-row items-center justify-between">
         <div class="text-white flex flex-col justify-center overflow-clip w-[45px] md:w-[145px] -translate-y-0.5">
             <EQXLogo/>

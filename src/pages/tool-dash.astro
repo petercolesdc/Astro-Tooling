@@ -1,0 +1,128 @@
+---
+// Layouts and components
+import Layout from '../layouts/dashboard.astro';
+import Header from '../components/scaffold/headerProgress.astro';
+import Input from '../components/forms/input.astro';
+import CardBasic from '../components/cards/article.astro';
+import CardSummary from '../components/cards/summary.astro';
+
+// Assets
+import BgSVG from '../assets/svg/DotMap.svg';
+import LogoAWS from "../assets/svg/logo-aws.svg";
+import LogoAzure from "../assets/svg/logo-azure.svg";
+import LogoGcloud from "../assets/svg/logo-gcloud.svg";
+import LogoOracle from "../assets/svg/logo-oracle.svg";
+import LogoOther from "../assets/svg/logo-otherclouds.svg";
+import { ArrowRight } from '@lucide/astro';
+
+// Data
+const ranges = [
+  { label: "AWS", icon: LogoAWS, size: "max-h-16", nudge: "translate-y-1", grayscale:"contrast-100 opacity-100" },
+  { label: "Azure", icon: LogoAzure, size: "max-h-18", nudge: "-translate-y-1", grayscale:"contrast-100 opacity-100" },
+  { label: "Google Cloud", icon: LogoGcloud, size: "max-h-18", nudge: "", grayscale:"contrast-0 opacity-30" },
+  { label: "Oracle Cloud", icon: LogoOracle, size: "max-h-20", nudge: "", grayscale:"contrast-0 opacity-30" },
+  { label: "Other", icon: LogoOther, size: "max-h-18", nudge: "", grayscale:"contrast-0 opacity-30" },
+];
+
+const chartData = [
+  { label: "Sustainability", color: "bg-aqua", meta: "54%"  },
+  { label: "Productivity", color: "bg-yellow", meta: "48%"  },
+  { label: "Cost", color: "bg-orange", meta: "47%"  },
+  { label: "Security", color: "bg-green", meta: "45%"  },
+  { label: "AI", color: "bg-blue", meta: "36%"  },
+];
+---
+
+<Layout 
+	title="Tooling app UI"
+	metaDescription="Screens for Equinix tools"
+	contentAlign="justify-start"
+	pageID="dashboard"
+>
+	<Header progress="width: 95%;" sticky={false} slot="header"/>
+
+	<!-- Main content -->
+	<div slot="content" class="space-y-8 flex flex-col xl:space-y-16 xl:gap-4 xl:flex-row">
+		<aside class="flex flex-col justify-between space-y-8 p-6 bg-linear-120 from-blue/30 via-purple/30 to-red/30 rounded-lg border-2 border-white/20 md:p-8 xl:w-1/3 xl:sticky xl:top-6 xl:min-h-[600px] xl:max-h-[calc(100dvh_-_130px)]">
+			<div class="space-y-8">
+				<header class="space-y-2">
+					<h1 class="text-lg heading">Get your report</h1>
+					<p class="text-sm text-white leading-normal text-balanced">Access the full report based on the information provided in this assessment.</p>
+				</header>
+				<fieldset class="space-y-6">
+					<div class="grid grid-cols-2 gap-3">
+						<Input id="given-name" label="Given name"/>
+						<Input id="familiy-name" label="Familiy name"/>
+					</div>
+					<Input id="email" type="email" autocomplete="email" label="Email address"/>
+					<Input id="company" label="Company"/>
+					<Input id="role" label="Job title" required={false}/>
+				</fieldset>
+			</div>
+			<button class="button button--primary">
+				<span class="button__label">Generate report</span>
+				<span class="button__icon">
+					<ArrowRight size={16} stroke-width={2} />
+				</span>
+			</button>
+		</aside>
+		<div class="space-y-4 xl:min-h-[calc(100dvh_-_130px)] xl:pb-16 xl:w-2/3">
+
+			<!-- For one item -->
+			<CardSummary title="Your reach" />
+
+			<!-- For 3 items -->
+			<div class="grid grid-cols-1 gap-4 lg:grid-cols-3">
+				<CardBasic title="Saas and Cloud providers" description="You're just shy of the industry benchmark of 36"/>
+				<CardBasic title="Critical environments" description="These services were of most importance to you">
+					<div slot="graphic" class="flex flex-row flex-wrap justify-center items-center gap-6">
+						{ranges.map((item) => (
+							<img class={`${item.nudge} ${item.size} ${item.grayscale} w-auto object-contain`}
+                    			src={item.icon.src}
+                    			alt={item.label}
+							/>
+						))}
+					</div>
+				</CardBasic>
+				<CardBasic 
+					title="Your customers" 
+					description="Your user base in around average for the industry"
+					hasNav={true}
+				/>
+			</div>
+
+			<!-- For 2 items -->
+			<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+				<CardBasic 
+					title="Priorities" 
+					description="Here’s how your priorities compare to industry averages">
+					<div slot="data" class="flex w-full pb-4 text-start">
+						<ul class="text-neutral-500 space-y-1 w-full flex flex-col [&_li]:w-full [&_li]:flex [&_li]:flex-row [&_li]:justify-between [&_li]:gap-3 [&_li]:items-start [&_li]:text-neutral-200 [&_li]:text-sm [&_li]:leading-relaxed">
+							{chartData.map((item) => (
+								<li>
+									<span class="flex flex-row items-center gap-3"><span class={`${item.color} size-3 block bg-blue rounded-full`}></span>{item.label}</span>
+									<span>{item.meta}</span>
+								</li>
+							))}
+						</ul>
+					</div>
+				</CardBasic>
+				<CardBasic 
+					title="Drivers" 
+					description="Here’s how your priorities compare to industry averages">
+					<div slot="data" class="flex w-full pb-4 text-start">
+						<ul class="text-neutral-500 space-y-1 w-full flex flex-col [&_li]:w-full [&_li]:flex [&_li]:flex-row [&_li]:justify-between [&_li]:gap-3 [&_li]:items-start [&_li]:text-neutral-200 [&_li]:text-sm [&_li]:leading-relaxed">
+							{chartData.map((item) => (
+								<li>
+									<span class="flex flex-row items-center gap-3"><span class={`${item.color} size-3 block bg-blue rounded-full`}></span>{item.label}</span>
+									<span>{item.meta}</span>
+								</li>
+							))}
+						</ul>
+					</div>
+				</CardBasic>
+			</div>
+
+		</div>
+	</div>
+</Layout>

@@ -1,6 +1,6 @@
 ---
 // Props
-const { title, headingLevel="h1", headingStyle="text-md heading", bodyText=true } = Astro.props;
+const { title, headingLevel="h1", headingStyle="text-md heading", body="Our comprehensive security features and compliance programs meet rigorous industry standards. That's why we are trusted by over 5,000 global organizations to protect their equipment and data.", bodyText=true } = Astro.props;
 const HeadingTag = headingLevel;
 ---
 <section class="relative">
@@ -8,7 +8,7 @@ const HeadingTag = headingLevel;
         <HeadingTag class={headingStyle}>{title}</HeadingTag>
         {bodyText && (
         <div class="space-y-6 text-pretty [&_p]:text-neutral-200 [&_p]:text-sm [&_p]:leading-relaxed">
-            <p>Our comprehensive security features and compliance programs meet rigorous industry standards. That's why we are trusted by over 5,000 global organizations to protect their equipment and data.</p>
+            <p>{body}</p>
         </div>
         )}
     </div>

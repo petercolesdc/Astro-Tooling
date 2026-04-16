@@ -1,22 +1,32 @@
 ---
 // Formatters
-import { safe, uppercase, slugger } from "../../utls/textFormat";
+import { slugger } from "../../utls/textFormat";
 
-// Micro components
-import RenderImage from "../../components/images/utl.astro";
+// Imports
+import { ChevronLeft, ChevronRight } from '@lucide/astro';
 
 // Props
-const { title, text, image, altTag } = Astro.props;
+const { title, description, hasNav=false, hasTabs=false } = Astro.props;
 ---
-<article id={slugger(title)} class="space-y-3">
-    <RenderImage 
-        src={image}
-        alt={altTag}  
-        layout="constrained"
-        class="rounded-md"
-    />
-    <header class="space-y-0.5">
-        <h2 class="text-base font-bold">{uppercase(title)}</h2>
-        <p class="text-sm">{safe(text)}</p>
+<article id={slugger(title)} class="flex flex-col gap-6 justify-between items-center text-center bg-black/20 backdrop-blur-sm border-2 border-white/20 p-8 rounded-md w-full h-auto">
+    <header class="flex flex-row items-center justify-between gap-4 w-full">
+        { hasNav && 
+        <button class="flex shrink-0 grow-0 cursor-pointer text-white hover:text-purple-100 focus:text-purple-100 -translate-x-2">
+            <ChevronLeft size={24} stroke-width={2} />
+        </button>
+        }
+        <h2 class="text-base text-white heading w-full cursor-pointer text-center">{title}</h2>
+        { hasNav && 
+        <button class="flex shrink-0 grow-0 cursor-pointer text-white hover:text-purple-100 focus:text-purple-100 translate-x-2">
+            <ChevronRight size={24} stroke-width={2} />
+        </button>
+        }
     </header>
+    <div class="contents">
+        <slot name="graphic">
+            <div class="w-full h-56 bg-white/5 flex flex-col items-center justify-center">Chart here</div>
+        </slot>
+        <slot name="data"></slot>
+        <p class="text-xs text-neutral-500 leading-normal text-balanced">{description}</p>
+    </div>
 </article>

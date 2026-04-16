@@ -1,0 +1,20 @@
+---
+import '../styles/global.css' 
+import BaseHead from '../components/head.astro';
+const { pageID, title, metaDescription, stage, showStage, contentAlign='' } = Astro.props;
+---
+<html data-theme="dark" lang="en" class={pageID}>
+    <BaseHead title={title} metaDescription={metaDescription}/>
+    <body class="bg-black bg-linear-120 from-blue/30 via-purple/30 to-red/30 text-white min-h-dvh">
+        <div id="content" class="relative overflow-x-clip">
+            <main class="relative z-10 mx-auto max-w-[var(--content)]">
+                <div class={`space-y-6 min-h-dvh flex flex-col ${contentAlign}`}>
+                    <slot name="header"/>
+                    <section class="px-8 pt-4">
+                        <slot name="content"/>
+                    </section>
+                </div>
+            </main>
+        </div>
+    </body>
+</html>

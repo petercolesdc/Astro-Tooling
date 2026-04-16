@@ -7,20 +7,22 @@ import BlockStandard from '../components/blocks/textStandard.astro';
 
 // Assets
 import BgSVG from '../assets/svg/DotMap.svg';
-import LogoAWS from "../assets/svg/logo-aws.svg";
-import LogoAzure from "../assets/svg/logo-azure.svg";
-import LogoGcloud from "../assets/svg/logo-gcloud.svg";
-import LogoOracle from "../assets/svg/logo-oracle.svg";
-import LogoOther from "../assets/svg/logo-otherclouds.svg";
+import US_East from "../assets/images/map-US-east.png";
+import Europe from "../assets/images/europe.png";
 
 // Props
 const stage = 2;
 const ranges = [
-  { label: "AWS", icon: LogoAWS, size: "max-h-16", nudge: "translate-y-1" },
-  { label: "Azure", icon: LogoAzure, size: "max-h-18", nudge: "-translate-y-1" },
-  { label: "Google Cloud", icon: LogoGcloud, size: "max-h-18", nudge: "" },
-  { label: "Oracle Cloud", icon: LogoOracle, size: "max-h-20", nudge: "" },
-  { label: "Other", icon: LogoOther, size: "max-h-18", nudge: "" },
+  { label: "US East", icon: US_East },
+  { label: "US Central", icon: US_East },
+  { label: "US West", icon: US_East },
+  { label: "Canada", icon: US_East },
+  { label: "Europe", icon: Europe },
+  { label: "India", icon: US_East },
+  { label: "Mexico", icon: US_East },
+  { label: "Latin America", icon: US_East },
+  { label: "Australia & Oceania", icon: US_East },
+  { label: "Southeast Asia", icon: US_East },
 ];
 ---
 <Layout 
@@ -30,28 +32,27 @@ const ranges = [
 	pageID="tool-steps"
 	stage={stage}
 	showStage={true}
-	navigation={{ next: true, previous: true, footer: true, nextUrl: "/tool-3", prevUrl: "/tool-1" }} 
+	navigation={{ next: true, previous: true, footer: true, nextUrl: "/tool-dash", prevUrl: "/tool-2" }} 
 >
-	<Header progress="width: 20%;" slot="header"/>
+	<Header progress="width: 30%;" slot="header"/>
 
 	<!-- Main content -->
 	<div slot="content" class="space-y-16">
 		<BlockStandard 
-			title="What are the most critical cloud environments for your business?"
-			bodyText={false}
+			title="Where are your users located?"
+			body="Rank your top 3 regions based on user concentration."
 		>
 			<div slot="blockAfter" class="pt-12">
 				<h3 id="scroller-label" class="text-xs uppercase heading text-neutral-500">Select all that apply</h3>
 				<div aria-labelledby="scroller-label" class="relative flex flex-row flex-nowrap gap-4 py-6 px-8 -translate-x-8 w-[calc(100%_+_var(--spacing)_*_8)] scrollbar overflow-x-auto mask-linear-90 mask-linear-from-99% mask-linear-to-100%">
 					{ranges.map((item) => (
-						<Card iconSize={item.size} iconNudge={item.nudge} label={item.label} icon={item.icon} />
+						<Card label={item.label} icon={item.icon} />
 					))}
 				</div>
 			</div>
 		</BlockStandard>
 	</div>
 	
-
 	<!-- DotMap -->
 	<BgSVG slot="asideGraphic" preserveAspectRatio="xMinYMid slice" class="text-white/20 h-full opacity-50 relative"/>
 	
