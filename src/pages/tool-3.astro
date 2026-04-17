@@ -13,16 +13,16 @@ import Europe from "../assets/svg/map-europe.svg";
 // Props
 const stage = 3;
 const ranges = [
-  { label: "US East", icon: US_East },
-  { label: "US Central", icon: US_East },
-  { label: "US West", icon: US_East },
-  { label: "Canada", icon: US_East },
-  { label: "Europe", icon: Europe },
-  { label: "India", icon: US_East },
-  { label: "Mexico", icon: US_East },
-  { label: "Latin America", icon: US_East },
-  { label: "Australia & Oceania", icon: US_East },
-  { label: "Southeast Asia", icon: US_East },
+  { label: "US East", icon: US_East, delayOffset: "0" },
+  { label: "US Central", icon: US_East, delayOffset: "0.5" },
+  { label: "US West", icon: US_East, delayOffset: "1" },
+  { label: "Canada", icon: US_East, delayOffset: "1.5" },
+  { label: "Europe", icon: Europe, delayOffset: "2" },
+  { label: "India", icon: US_East, delayOffset: "2.5" },
+  { label: "Mexico", icon: US_East, delayOffset: "3" },
+  { label: "Latin America", icon: US_East, delayOffset: "3.5" },
+  { label: "Australia & Oceania", icon: US_East, delayOffset: "4" },
+  { label: "Southeast Asia", icon: US_East, delayOffset: "4.5" },
 ];
 ---
 <Layout 
@@ -46,7 +46,11 @@ const ranges = [
 				<h3 id="scroller-label" class="text-xs uppercase heading text-neutral-500">Select all that apply</h3>
 				<div aria-labelledby="scroller-label" class="relative flex flex-row flex-nowrap gap-4 py-6 px-8 -translate-x-8 w-[calc(100%_+_var(--spacing)_*_8)] scrollbar overflow-x-auto mask-linear-90 mask-linear-from-99% mask-linear-to-100%">
 					{ranges.map((item) => (
-						<Card label={item.label} icon={item.icon} />
+						<Card 
+							label={item.label} 
+							icon={item.icon} 
+							delayOffset={item.delayOffset}
+						/>
 					))}
 				</div>
 			</div>

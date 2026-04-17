@@ -1,0 +1,34 @@
+/******************************************
+Adjusts for text sizing based on typeface 
+*******************************************/
+
+.font-mono,
+code, kbd, samp, pre {
+  font-size-adjust: var(--font-mono-adjust);
+}
+
+/* Localization adjustments */
+
+/* Japanese */
+[lang^="ja"] {
+  @apply font-jp;
+  --text-base--font-weight: var(--font-weight-normal);
+  --text-md--font-weight: var(--font-weight-normal);
+  --text-lg--font-weight: var(--font-weight-normal);
+  font-size-adjust: var(--font-jp-adjust);
+}
+
+/* Korean */
+[lang^="ko"] {
+  @apply font-kr;
+  --text-base--font-weight: var(--font-weight-normal);
+  --text-md--font-weight: var(--font-weight-normal);
+  --text-lg--font-weight: var(--font-weight-normal);
+  font-size-adjust: var(--font-kr-adjust);
+}
+
+/* Urdu and Standard arabic */
+[lang^="ur"],
+[lang^="ar"] {
+  font-size-adjust: var(--font-script-adjust);
+}

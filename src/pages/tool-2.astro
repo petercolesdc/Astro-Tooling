@@ -17,11 +17,11 @@ import LogoOther from "../assets/svg/logo-otherclouds.svg";
 // Props
 const stage = 2;
 const ranges = [
-  { label: "AWS", icon: LogoAWS, size: "max-h-18", nudge: "translate-y-1" },
-  { label: "Azure", icon: LogoAzure, size: "max-h-18", nudge: "-translate-y-1" },
-  { label: "Google Cloud", icon: LogoGcloud, size: "max-h-18", nudge: "" },
-  { label: "Oracle Cloud", icon: LogoOracle, size: "max-h-18 scale-105", nudge: "" },
-  { label: "Other", icon: LogoOther, size: "max-h-18", nudge: "" },
+  { label: "AWS", icon: LogoAWS, size: "max-h-18", nudge: "translate-y-1", delayOffset: "" },
+  { label: "Azure", icon: LogoAzure, size: "max-h-18", nudge: "-translate-y-1", delayOffset: "0.5" },
+  { label: "Google Cloud", icon: LogoGcloud, size: "max-h-18", nudge: "", delayOffset: "1" },
+  { label: "Oracle Cloud", icon: LogoOracle, size: "max-h-18 scale-105", nudge: "", delayOffset: "1.5" },
+  { label: "Other", icon: LogoOther, size: "max-h-18", nudge: "", delayOffset: "2" },
 ];
 ---
 <Layout 
@@ -45,7 +45,13 @@ const ranges = [
 				<h3 id="scroller-label" class="text-xs uppercase heading text-neutral-500">Select all that apply</h3>
 				<div aria-labelledby="scroller-label" class="relative py-6 flex flex-wrap gap-4">
 					{ranges.map((item) => (
-						<Card iconSize={item.size} iconNudge={item.nudge} label={item.label} icon={item.icon} />
+						<Card 
+							iconSize={item.size} 
+							iconNudge={item.nudge} 
+							label={item.label} 
+							icon={item.icon} 
+							delayOffset={item.delayOffset}
+						/>
 					))}
 				</div>
 			</div>
@@ -57,7 +63,7 @@ const ranges = [
 		slot="asideGraphic" 
 		src={BgImage} 
 		priority={true}
-		class="object-cover w-full h-full opacity-20"
+		class="object-cover w-full opacity-20"
 		alt=""
 	/>
 </Layout>

@@ -12,17 +12,17 @@ import BgImage from '../assets/images/bg-orb.png';
 // Props
 const stage = 4;
 const ranges = [
-	"Financial services", 
-	"Healthcare & Life sciences", 
-	"Technology services", 
-	"Public sector & Government", 
-	"Manufacturing & Industrial",
-	"Retail & Consumer services",
-	"Media & Entertainment",
-	"Energy & Utilities",
-	"Cloud & IT services",
-	"Network services",
-	"Something else",
+	{ label: "Financial services", delayOffset: 0 },
+	{ label: "Healthcare & Life sciences", delayOffset: 0.5 },
+	{ label: "Technology services", delayOffset: 1 },
+	{ label: "Public sector & Government", delayOffset: 2.5 },
+	{ label: "Manufacturing & Industrial", delayOffset: 2 },
+	{ label: "Retail & Consumer services", delayOffset: 2.5 },
+	{ label: "Media & Entertainment", delayOffset: 3 },
+	{ label: "Energy & Utilities", delayOffset: 3.5 },
+	{ label: "Cloud & IT services", delayOffset: 4 },
+	{ label: "Network services", delayOffset: 4.5 },
+	{ label: "Something else", delayOffset: 5 },
 ];
 ---
 <Layout 
@@ -45,8 +45,11 @@ const ranges = [
 			<div slot="blockAfter" class="pt-12">
 				<h3 id="scroller-label" class="text-xs uppercase heading text-neutral-500">Select all that apply</h3>
 				<div aria-labelledby="scroller-label" class="relative py-6 grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-					{ranges.map((label) => (
-						<Card key={label} label={label} />
+					{ranges.map((item) => (
+						<Card 
+							label={item.label} 
+							delayOffset={item.delayOffset}
+						/>
 					))}
 				</div>
 			</div>
@@ -58,7 +61,7 @@ const ranges = [
 		slot="asideGraphic" 
 		src={BgImage} 
 		priority={true}
-		class="object-cover w-full h-full opacity-20"
+		class="object-cover w-full opacity-20"
 		alt=""
 	/>
 </Layout>

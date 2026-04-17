@@ -37,3 +37,61 @@ Common typesetting utilities
 .uppercase {
   letter-spacing: var(--tracking-wide);
 }
+
+/******************************************
+Common code styles
+NOTE: Coloring is set in /core/common.css
+*******************************************/
+
+.code-inline {
+  @apply
+    p-1 
+    select-all 
+    rounded-xs 
+    border 
+    font-mono;
+}
+
+/******************************************
+Advanced lists
+*******************************************/
+
+.list-incremental {
+  counter-reset: list-counter;
+  li {
+    counter-increment: list-counter;
+  }
+  li:before {
+    content: counter(list-counter);
+    line-height: var(--leading-none);
+    font-size: var(--text-xs);
+    font-weight: var(--font-weight-bold);
+    @apply
+      flex
+      p-2.5
+      absolute
+      start-0
+      top-0
+      text-center
+      w-7
+      h-7
+      rounded-full
+      border-2
+      items-center
+      justify-center
+      font-mono
+  }
+}
+
+/******************************************
+Flexblocks
+*******************************************/
+
+.flexblocks {
+  @apply
+    [&_[data-component='utility/title-block']:has(+[data-component^='deck/'],+[data-component^='highlight'],+[data-component^='cta'])]:2xl:mb-20
+    [&_[data-component='logo-wall']]:pt-3.5
+    [&_[data-component*='deck/articles']]:pb-7
+    [&_[data-component*='deck/metrics']]:pb-0
+    [&_[data-component*='deck/metrics']]:pt-3.5;
+}

@@ -14,6 +14,17 @@
   --font-*: initial;
   --text-*: initial;
 
+  /* 
+    The below two variables work in harmony to align page content
+    and header navigation. The value always needs to be the same.
+
+    1. Wrapper. Contains internal x-axis boundaries for page content
+    2. Breakpoint header. Where the header internal padding changes 
+  */
+  
+  --spacing-wrapper: 1800px;
+  --breakpoint-header: 1800px;
+
   /* Standard @media width breakpoints */
   --breakpoint-xs: 360px;
   --breakpoint-sm: 580px;
@@ -22,6 +33,10 @@
   --breakpoint-xl: 1360px;
   --breakpoint-2xl: 1720px;
   --breakpoint-3xl: 2200px;
+
+  /* Primary nav specifics */
+  --breakpoint-nav: 1100px; /* Where the nav changes layout to full layout */
+  --breakpoint-logo: 1340px; /* Where the full logo appears */
 
   --color-neutral-100: #f2f3f4;
   --color-neutral-200: #e1e3e7;
@@ -129,6 +144,7 @@
 /* Import base layers below */
 @import "./app.css" layer(base);
 @import "./core/common.css" layer(base);
+@import "./core/typefaces.css" layer(base);
 
 /* Import components below */
 @import "./components/buttons.css" layer(components);

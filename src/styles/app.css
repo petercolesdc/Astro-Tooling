@@ -6,6 +6,33 @@ Application specific variables
   --content: 1500px;
   --dashboard: 1600px;
   --glow: 0 0px 24px rgba(255, 255, 255, 0.05);
+  --color-blue-darken: color-mix(in srgb, var(--color-purple), black 80%);
+  --color-purple-darken: color-mix(in srgb, var(--color-purple), black 60%);
+  --color-red-darken: color-mix(in srgb, var(--color-red), black 50%);
+}
+
+/******************************************
+Fade things in gently
+*******************************************/
+
+[data-transition="fade-up-slow"] {
+    opacity: 0;
+    animation: fadeUp 5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: 0.5s;
+}
+
+[data-transition="drop-in"] {
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeUp 3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: calc(var(--f-delay, 0) * 0.1s);
+}
+
+@keyframes fadeUp {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 

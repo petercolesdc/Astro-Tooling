@@ -47,6 +47,54 @@ summary::-webkit-details-marker {
   display: none;
 }
 
+/******************************************
+Wrapper classes
+*******************************************/
+
+/* Center align within the viewport */
+.wrapper {
+  @apply mx-auto
+  	w-full
+	  px-8
+	  max-w-wrapper;
+}
+
+.wrapper .wrapper {
+    @apply
+        px-0;
+}
+
+
+/******************************************
+Inner wrapper to limit internal width 
+of content but still align with the grid.
+
+This is the equivalent to a grid that spans
+10 columns of our 12 column grid and that 
+starts in column 2.
+
+Requires nesting inside wrapper
+
+Matches --breakpoint-xl
+*******************************************/
+
+.inner-wrapper {
+  @apply xl:mx-auto;
+  @media (width >= 1360px) {
+    width: calc((100% / 12)*10);
+  }
+}
+
+/******************************************
+Standard grid gap
+*******************************************/
+
+.gap-grid {
+  @apply
+  gap-4
+  2xl:gap-8
+}
+
 
 /******************************************
 Scrollbar controller
@@ -113,4 +161,101 @@ Text links
   @apply 
     inline-block 
     ms-0.5;
+}
+
+/* Hide from certain components */
+[data-component="footer"] .text-link[rel*="external"]::after,
+[data-component="header"] .text-link[rel*="external"]::after,
+[data-component="emphasis-link"]:has([data-role="icon"]).text-link[rel*="external"]::after  {
+  @apply
+    hidden;
+}
+
+/******************************************
+Image links
+*******************************************/
+
+.image-link {
+  @apply
+    focus-visible:rounded-xs
+    focus-visible:outline-2 
+    focus-visible:outline-offset-3
+    focus-visible:outline-violet
+    dark:focus:outline-violet-100;
+}
+
+
+/******************************************
+Common text colors
+*******************************************/
+
+.text-primary,
+b, strong {
+  @apply
+    text-neutral-900
+    dark:text-white
+}
+
+.text-secondary {
+  @apply
+    text-neutral-700
+    dark:text-neutral-400
+}
+
+.text-gradient {
+  @apply
+    bg-clip-text 
+    bg-linear-20
+    from-red
+    via-purple
+    to-blue-900
+    text-transparent
+    dark:from-aqua-100
+    dark:via-green-100
+    dark:to-yellow-100;
+}
+
+/******************************************
+Common border colors
+*******************************************/
+
+.border-canvas {
+  @apply
+    border-neutral-100
+    dark:border-neutral-900;
+}
+
+.border-offset,
+.code-inline {
+  @apply
+    border-neutral-200
+    dark:border-neutral-800;
+}
+
+/******************************************
+Common surface colors
+*******************************************/
+
+.bg-canvas {
+  @apply
+    bg-white
+    dark:bg-black
+}
+
+.bg-offset,
+.code-inline {
+  @apply
+    bg-neutral-100
+    dark:bg-neutral-900
+}
+
+/******************************************
+RTL icon inversions
+*******************************************/
+
+:where([dir="rtl"], [dir="rtl"] *) svg[class*="external"],
+:where([dir="rtl"], [dir="rtl"] *) svg[class*="arrow-right"],
+:where([dir="rtl"], [dir="rtl"] *) svg[class*="arrow-left"] {
+    @apply
+    -scale-100;
 }

@@ -3,10 +3,10 @@
 import { slugger } from "../../utls/textFormat";
 
 // Props
-const { label = "Text goes here", type="checkbox" } = Astro.props;
+const { label = "Text goes here", type="checkbox", delayOffset="0" } = Astro.props;
 ---
 
-<label class="group flex flex-row items-center gap-2 cursor-pointer">
+<label data-transition="drop-in" style={`--f-delay: ${delayOffset}`} class="group flex flex-row items-center gap-2 cursor-pointer">
     <div class="p-0.5 flex flex-col w-full items-center justify-center rounded-sm
             bg-linear-120 from-white/20 to-white/20 text-neutral-500 transition-all duration-500
             group-has-checked:from-aqua 
