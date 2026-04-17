@@ -13,7 +13,7 @@ const { pageID, title, metaDescription, stage, navigation, showStage, contentAli
             <main class="relative z-10 mx-auto max-w-[var(--content)]">
                 <div class={`space-y-6 min-h-dvh flex flex-col ${contentAlign}`}>
                     <slot name="header"/>
-                    <article class="space-y-3 flex flex-col px-8 pt-4 pb-32 md:pt-8">
+                    <article class="space-y-3 flex flex-col px-8 pt-4 pb-36 md:pt-8">
                         {showStage && (
                             <span class="block pb-3 text-xs uppercase heading text-neutral-500">Stage {stage} of 9</span>
                         )}

@@ -1,0 +1,32 @@
+---
+// Formatters
+import { slugger } from "../../utls/textFormat";
+
+// Imports
+import { GripVertical, X } from '@lucide/astro';
+
+// Props
+const { index, label = "Text goes here", delayOffset="0", rankColor="bg-aqua-100" } = Astro.props;
+---
+
+<label data-transition="drop-in" style={`--f-delay: ${delayOffset}`} class="group select-none hover:cursor-grabbing">
+    <input 
+        value={slugger(label)} 
+        id={`value-${slugger(label)}`} 
+        type="text" 
+        name="countries[]" 
+        class="hidden"
+    />
+    <div class="flex flex-row w-full h-full gap-3 justify-between items-center text-start bg-black text-sm font-bold rounded-md border-2 border-white/10">
+        <div class="flex flex-row gap-2 items-center p-4">
+            <GripVertical size={24} stroke-width={2} />
+            <span data-rank class={`${rankColor} size-6 p-2 text-center leading-2 flex flex-col items-center justify-center text-xs font-bold rounded-full text-black`}>{index + 1}
+            </span>
+            <span class="text-sm truncate">{label}</span>
+        </div>
+        <button aria-label={`Remove ${label}`}
+            class="h-full flex flex-col items-center cursor-pointer p-4 rounded-md hover:text-maroon-100 focus:text-maroon-100 focus:outline-0 focus-visible:ring-2 focus-visible:ring-white">
+            <X size={24} stroke-width={2} /> 
+        </button>
+    </div>
+</label>

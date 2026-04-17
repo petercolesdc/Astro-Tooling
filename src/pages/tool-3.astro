@@ -3,6 +3,7 @@
 import Layout from '../layouts/basic.astro';
 import Header from '../components/scaffold/headerProgress.astro';
 import Card from '../components/cards/imageRadioCheck.astro';
+import CardDrag from '../components/cards/inputDrag.astro';
 import BlockStandard from '../components/blocks/textStandard.astro';
 
 // Assets
@@ -24,7 +25,16 @@ const ranges = [
   { label: "Australia & Oceania", icon: US_East, delayOffset: "4" },
   { label: "Southeast Asia", icon: US_East, delayOffset: "4.5" },
 ];
+
+const selections = [
+  { label: "US East" },
+  { label: "Australia & Oceania" },
+  { label: "Latin America" },
+  { label: "Europe" },
+  { label: "Southeast Asia" },
+];
 ---
+
 <Layout 
 	title="Tooling app UI"
 	metaDescription="Screens for Equinix tools"
@@ -37,14 +47,14 @@ const ranges = [
 	<Header progress="width: 30%;" slot="header"/>
 
 	<!-- Main content -->
-	<div slot="content" class="space-y-16">
+	<div slot="content" class="space-y-8 md:space-y-12">
 		<BlockStandard 
 			title="Where are your users located?"
 			body="Rank your global regions based on user concentration. Higher ranked locations factor more strongly in the final report."
 		>
 			<div slot="blockAfter" class="pt-12">
-				<h3 id="scroller-label" class="text-xs uppercase heading text-neutral-500">Select all that apply</h3>
-				<div aria-labelledby="scroller-label" class="relative flex flex-row flex-nowrap gap-4 py-6 px-8 -translate-x-8 w-[calc(100%_+_var(--spacing)_*_8)] scrollbar overflow-x-auto mask-linear-90 mask-linear-from-99% mask-linear-to-100%">
+				<h3 class="text-xs uppercase heading text-neutral-500">Select all that apply</h3>
+				<div class="relative flex flex-row flex-nowrap gap-4 py-6 px-8 -translate-x-8 w-[calc(100%_+_var(--spacing)_*_8)] scrollbar overflow-x-auto mask-linear-90 mask-linear-from-99% mask-linear-to-100%">
 					{ranges.map((item) => (
 						<Card 
 							label={item.label} 
@@ -55,6 +65,37 @@ const ranges = [
 				</div>
 			</div>
 		</BlockStandard>
+
+		<BlockStandard 
+			title="User concentration ranking"
+			headingStyle="text-xs uppercase heading text-neutral-500"
+			bodyText={false}
+		>
+			<div slot="blockAfter" class="pt-6">
+				<ol class="space-y-1" aria-label="Selected countries in priority order">
+					{selections.map((item, i) => (
+						<li class="first:[&_[data-rank]]:bg-yellow 
+							rounded-md
+							focus:outline-0
+							focus-visible:ring-2 
+							focus-visible:ring-white 
+							focus-visible:ring-offset-1" 
+							data-index={i} 
+							tabindex="0" 
+							aria-selected="false">
+							<CardDrag 
+								index={i}
+								label={item.label} 
+								rankColor={item.rankColor} 
+							/>
+						</li>
+					))}
+				</ol>
+				<!-- For screen reader support, announce when item is moved -->
+				<div id="sr-announcer" aria-live="polite" class="sr-only"></div>
+			</div>
+		</BlockStandard>
+
 	</div>
 	
 	<!-- DotMap -->
@@ -62,4 +103,5 @@ const ranges = [
 	
 </Layout>
 
+<script type="module" src="/scripts/dragOrder.js"></script>
 <script type="module" src="/scripts/mapGlow.js"></script>
