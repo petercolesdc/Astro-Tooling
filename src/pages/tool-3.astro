@@ -8,22 +8,34 @@ import BlockStandard from '../components/blocks/textStandard.astro';
 
 // Assets
 import BgSVG from '../assets/svg/DotMap.svg';
-import US_East from "../assets/svg/map-US-east.svg";
-import Europe from "../assets/svg/map-europe.svg";
+import USEast from "../assets/svg/regions/USA-East.svg";
+import USCentral from "../assets/svg/regions/USA-Central.svg";
+import USWest from "../assets/svg/regions/USA-west.svg";
+import Canada from "../assets/svg/regions/Canada.svg";
+import Europe from "../assets/svg/regions/Europe.svg";
+import Japan from "../assets/svg/regions/Japan.svg";
+import Africa from "../assets/svg/regions/Africa.svg";
+import India from "../assets/svg/regions/India.svg";
+import Mexico from "../assets/svg/regions/Mexico.svg";
+import LatinAmerica from "../assets/svg/regions/Latin-America.svg";
+import AustraliaOceania from "../assets/svg/regions/Australia-Oceania.svg";
+import SoutheastAsia from "../assets/svg/regions/Southeast-Asia.svg";
 
 // Props
 const stage = 3;
 const ranges = [
-  { label: "US East", icon: US_East, delayOffset: "0" },
-  { label: "US Central", icon: US_East, delayOffset: "0.5" },
-  { label: "US West", icon: US_East, delayOffset: "1" },
-  { label: "Canada", icon: US_East, delayOffset: "1.5" },
-  { label: "Europe", icon: Europe, delayOffset: "2" },
-  { label: "India", icon: US_East, delayOffset: "2.5" },
-  { label: "Mexico", icon: US_East, delayOffset: "3" },
-  { label: "Latin America", icon: US_East, delayOffset: "3.5" },
-  { label: "Australia & Oceania", icon: US_East, delayOffset: "4" },
-  { label: "Southeast Asia", icon: US_East, delayOffset: "4.5" },
+{ label: "US East", icon: USEast, delayOffset: "0" },
+{ label: "US Central", icon: USCentral, delayOffset: "0.5" },
+{ label: "US West", icon: USWest, delayOffset: "1" },
+{ label: "Canada", icon: Canada, delayOffset: "1.5" },
+{ label: "Europe", icon: Europe, delayOffset: "2" },
+{ label: "Japan", icon: Japan, delayOffset: "2.5" },
+{ label: "Africa", icon: Africa, delayOffset: "3" },
+{ label: "India", icon: India, delayOffset: "3.5" },
+{ label: "Mexico", icon: Mexico, delayOffset: "4" },
+{ label: "Latin America", icon: LatinAmerica, delayOffset: "4.5" },
+{ label: "Australia & Oceania", icon: AustraliaOceania, delayOffset: "5" },
+{ label: "Southeast Asia", icon: SoutheastAsia, delayOffset: "5.5" },
 ];
 
 const selections = [
@@ -86,7 +98,6 @@ const selections = [
 							<CardDrag 
 								index={i}
 								label={item.label} 
-								rankColor={item.rankColor} 
 							/>
 						</li>
 					))}
