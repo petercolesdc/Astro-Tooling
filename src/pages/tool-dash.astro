@@ -6,6 +6,8 @@ import Input from '../components/forms/input.astro';
 import Select from '../components/forms/select.astro';
 import CardBasic from '../components/cards/article.astro';
 import CardSummary from '../components/cards/summary.astro';
+import DonutChart from "../components/charts/donut.astro";
+import BandChart from "../components/charts/band.astro";
 
 // Assets
 import BgImage from '../assets/images/bg-orb.png';
@@ -26,11 +28,11 @@ const ranges = [
 ];
 
 const chartData = [
-  { label: "Sustainability", color: "bg-aqua", meta: "54%"  },
-  { label: "Productivity", color: "bg-yellow", meta: "48%"  },
-  { label: "Cost", color: "bg-orange", meta: "47%"  },
-  { label: "Security", color: "bg-green", meta: "45%"  },
-  { label: "AI", color: "bg-blue", meta: "36%"  },
+  { label: "Sustainability", color: "bg-aqua", meta: "40%"  },
+  { label: "Productivity", color: "bg-yellow", meta: "35%"  },
+  { label: "Cost", color: "bg-orange", meta: "12%"  },
+  { label: "Security", color: "bg-green", meta: "8%"  },
+  { label: "AI", color: "bg-violet", meta: "5%"  },
 ];
 ---
 
@@ -103,6 +105,11 @@ const chartData = [
 				<CardBasic 
 					title="Priorities" 
 					description="Here’s how your priorities compare to industry averages">
+					<DonutChart 
+						series={[40, 35, 12, 8, 5]}
+  						labels={["Sustainability", "Productivity", "Cost", "Security", "AI"]}
+						slot="graphic"
+					/>
 					<div slot="data" class="flex w-full pb-4 text-start">
 						<ul class="text-neutral-500 space-y-1 w-full flex flex-col [&_li]:w-full [&_li]:flex [&_li]:flex-row [&_li]:justify-between [&_li]:gap-3 [&_li]:items-start [&_li]:text-neutral-200 [&_li]:text-sm [&_li]:leading-relaxed">
 							{chartData.map((item) => (
@@ -117,6 +124,11 @@ const chartData = [
 				<CardBasic 
 					title="Drivers" 
 					description="Here’s how your priorities compare to industry averages">
+					<BandChart 
+						series={[40, 35, 12, 8, 5]}
+  						labels={["Sustainability", "Productivity", "Cost", "Security", "AI"]}
+						slot="graphic"
+					/>
 					<div slot="data" class="flex w-full pb-4 text-start">
 						<ul class="text-neutral-500 space-y-1 w-full flex flex-col [&_li]:w-full [&_li]:flex [&_li]:flex-row [&_li]:justify-between [&_li]:gap-3 [&_li]:items-start [&_li]:text-neutral-200 [&_li]:text-sm [&_li]:leading-relaxed">
 							{chartData.map((item) => (

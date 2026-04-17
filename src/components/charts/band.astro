@@ -1,0 +1,19 @@
+---
+const { series, labels } = Astro.props;
+---
+<div
+  data-band
+  data-series={JSON.stringify(series)}
+  data-labels={JSON.stringify(labels)}
+></div>
+
+<script type="module">
+  import { mountBarChart } from "./src/components/charts/band.client";
+
+  const el = document.querySelector("[data-band]");
+
+  mountBarChart(el, {
+    series: JSON.parse(el.dataset.series),
+    labels: JSON.parse(el.dataset.labels),
+  });
+</script>

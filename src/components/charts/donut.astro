@@ -1,0 +1,20 @@
+---
+const { series, labels } = Astro.props;
+---
+
+<div
+  data-donut
+  data-series={JSON.stringify(series)}
+  data-labels={JSON.stringify(labels)}
+></div>
+
+<script type="module">
+  import { mountDonutChart } from "./src/components/charts/donut.client";
+
+  const el = document.querySelector("[data-donut]");
+
+  mountDonutChart(el, {
+    series: JSON.parse(el.dataset.series),
+    labels: JSON.parse(el.dataset.labels),
+  });
+</script>
