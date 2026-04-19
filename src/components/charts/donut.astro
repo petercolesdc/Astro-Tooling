@@ -2,19 +2,24 @@
 const { series, labels } = Astro.props;
 ---
 
-<div
-  data-donut
+<donut-chart
   data-series={JSON.stringify(series)}
   data-labels={JSON.stringify(labels)}
-></div>
+>
 
-<script type="module">
-  import { mountDonutChart } from "./src/components/charts/donut.client";
+</donut-chart>
 
-  const el = document.querySelector("[data-donut]");
+<script>
+  import { mountDonutChart } from './donut.client';
 
-  mountDonutChart(el, {
-    series: JSON.parse(el.dataset.series),
-    labels: JSON.parse(el.dataset.labels),
-  });
+  class DonutChart extends HTMLElement {
+    connectedCallback() {
+      const series = JSON.parse(this.dataset.series || '[]');
+      const labels = JSON.parse(this.dataset.labels || '[]');
+      
+      mountDonutChart(this, { series, labels });
+    }
+  }
+
+  customElements.define('donut-chart', DonutChart);
 </script>

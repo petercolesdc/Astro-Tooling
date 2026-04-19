@@ -142,9 +142,11 @@
 }
 
 /* Import base layers below */
-@import "./app.css" layer(base);
 @import "./core/common.css" layer(base);
 @import "./core/typefaces.css" layer(base);
+
+/* Now application specifics */
+@import "./app.css" layer(base);
 
 /* Import components below */
 @import "./components/buttons.css" layer(components);

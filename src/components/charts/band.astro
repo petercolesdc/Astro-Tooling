@@ -1,19 +1,25 @@
 ---
 const { series, labels } = Astro.props;
 ---
-<div
-  data-band
+
+<band-chart
   data-series={JSON.stringify(series)}
   data-labels={JSON.stringify(labels)}
-></div>
+>
 
-<script type="module">
-  import { mountBarChart } from "./src/components/charts/band.client";
+</band-chart>
 
-  const el = document.querySelector("[data-band]");
+<script>
+  import { mountBarChart } from './band.client';
 
-  mountBarChart(el, {
-    series: JSON.parse(el.dataset.series),
-    labels: JSON.parse(el.dataset.labels),
-  });
+  class BandChart extends HTMLElement {
+    connectedCallback() {
+      const series = JSON.parse(this.dataset.series || '[]');
+      const labels = JSON.parse(this.dataset.labels || '[]');
+      
+      mountBarChart(this, { series, labels });
+    }
+  }
+
+  customElements.define('band-chart', BandChart);
 </script>

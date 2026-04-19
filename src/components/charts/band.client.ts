@@ -1,67 +1,60 @@
 import ApexCharts from "apexcharts";
 
-export function mountBarChart(el: HTMLElement, props: any) {
+type RadialChartProps = {
+  series: number[];              // e.g. [67]
+  labels?: string[];             // e.g. ["Progress"]
+  colors?: string[];             // optional override
+};
+
+export function mountBarChart(el: HTMLElement, props: RadialChartProps) {
   const styles = getComputedStyle(document.documentElement);
 
+  const series = props.series ?? [0];
+
   const colors = [
-    styles.getPropertyValue("--color-blue").trim() || "#3b82f6",
-    styles.getPropertyValue("--color-yellow").trim() || "#eab308",
-    styles.getPropertyValue("--color-orange").trim() || "#f97316",
-    styles.getPropertyValue("--color-green").trim() || "#22c55e",
-    styles.getPropertyValue("--color-violet").trim() || "#8b5cf6",
+    styles.getPropertyValue("--color-aqua").trim(),
   ];
 
-  const chart = new ApexCharts(el, {
+  const options: ApexCharts.ApexOptions = {
     chart: {
-      type: "bar",
-      background: "transparent",
-      foreColor: "#e5e7eb",
-      toolbar: { show: false },
+      type: "radialBar",
+      foreColor: "#red",
+      sparkline: {
+        enabled: true
+      },
+      height: 220,
     },
-
-    series: [
-      {
-        name: "Value",
-        data: props.series
-      }
-    ],
-
+    series,
     colors,
-
+    labels: ["Customers"],
     plotOptions: {
-      bar: {
-        distributed: true,
-        borderRadius: 6,
-        columnWidth: "55%"
-      }
+      radialBar: {
+        hollow: {
+          size: "60%",
+        },
+        track: {
+          background: "rgba(255,255,255,0.2)",
+        },
+        dataLabels: {
+          name: {
+            offsetY: 0,
+            show: false,
+            color: styles.getPropertyValue("--color-aqua").trim(),
+            fontSize: "13px"
+          },
+          value: {
+            color: "#ffffff",
+            fontSize: "36px",
+            offsetY: 12,
+            show: false
+          }
+        },
+      },
     },
+  };
 
-    dataLabels: {
-      enabled: false
-    },
-
-    grid: {
-      show: false
-    },
-
-    xaxis: {
-      labels: { show: false },
-      axisTicks: { show: false },
-      axisBorder: { show: false }
-    },
-
-    yaxis: {
-      labels: { show: false }
-    },
-
-    legend: {
-      show: false
-    },
-
-    tooltip: {
-      theme: "dark"
-    }
-  });
-
+  const chart = new ApexCharts(el, options);
   chart.render();
+
+  return chart;
 }

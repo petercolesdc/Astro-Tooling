@@ -66,7 +66,7 @@ const selections = [
 		>
 			<div slot="blockAfter" class="pt-12">
 				<h3 class="text-xs uppercase heading text-neutral-500">Select all that apply</h3>
-				<div class="relative flex flex-row flex-nowrap gap-4 py-6 px-8 -translate-x-8 w-[calc(100%_+_var(--spacing)_*_8)] scrollbar overflow-x-auto mask-linear-90 mask-linear-from-99% mask-linear-to-100%">
+				<div id="region-selector" class="relative flex flex-row flex-nowrap gap-4 py-6 px-8 -translate-x-8 w-[calc(100%_+_var(--spacing)_*_8)] scrollbar overflow-x-auto mask-linear-90 mask-linear-from-99% mask-linear-to-100%">
 					{ranges.map((item) => (
 						<Card 
 							label={item.label} 
@@ -84,7 +84,7 @@ const selections = [
 			bodyText={false}
 		>
 			<div slot="blockAfter" class="pt-6">
-				<ol class="space-y-1" aria-label="Selected countries in priority order">
+				<ol id="selection-list" class="space-y-1" aria-label="Selected countries in priority order">
 					{selections.map((item, i) => (
 						<li class="first:[&_[data-rank]]:bg-yellow 
 							rounded-md

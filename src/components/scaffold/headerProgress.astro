@@ -4,8 +4,7 @@ import EQXLogo from '../../assets/svg/logo.svg';
 // Props
 const { progress="width: 10%;", sticky=true } = Astro.props;
 ---
-<header
-  class:list={[
+<header class:list={[
     "space-y-6 pt-8 px-8 backdrop-blur-xs z-20 top-0 start-0 w-full",
     sticky && "sticky"
   ]}

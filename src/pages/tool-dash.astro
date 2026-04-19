@@ -82,7 +82,14 @@ const chartData = [
 
 		<!-- For 3 items -->
 			<div class="grid grid-cols-1 gap-4 lg:grid-cols-3">
-				<CardBasic title="Saas and Cloud providers" description="You're just shy of the industry benchmark of 36"/>
+				<CardBasic 
+					title="Saas and Cloud providers" 
+					description="You're just shy of the industry benchmark of 36"
+				>
+					<div class="" slot="graphic">
+						<h3 class="heading text-gradient text-center text-2xl">70&ndash;120</h3>
+					</div>
+				</CardBasic>
 				<CardBasic title="Critical environments" description="These services were of most importance to you">
 					<div slot="graphic" class="flex flex-row flex-wrap justify-center items-center gap-6">
 						{ranges.map((item) => (
@@ -97,7 +104,15 @@ const chartData = [
 					title="Your customers" 
 					description="Your user base in around average for the industry"
 					hasNav={true}
-				/>
+				>
+				<div slot="graphic">
+					<BandChart 
+						series={[80]}
+						labels="Customers"
+					/>
+					<h3 class="heading text-aqua text-center text-2xl">10&ndash;50k</h3>
+				</div>
+				</CardBasic>
 			</div>
 
 		<!-- For 2 items -->
@@ -106,8 +121,8 @@ const chartData = [
 					title="Priorities" 
 					description="Here’s how your priorities compare to industry averages">
 					<DonutChart 
-						series={[40, 35, 12, 8, 5]}
-  						labels={["Sustainability", "Productivity", "Cost", "Security", "AI"]}
+						series={chartData.map(item => parseInt(item.meta))}
+						labels={chartData.map(item => item.label)}
 						slot="graphic"
 					/>
 					<div slot="data" class="flex w-full pb-4 text-start">
@@ -124,11 +139,12 @@ const chartData = [
 				<CardBasic 
 					title="Drivers" 
 					description="Here’s how your priorities compare to industry averages">
-					<BandChart 
-						series={[40, 35, 12, 8, 5]}
-  						labels={["Sustainability", "Productivity", "Cost", "Security", "AI"]}
+				<DonutChart 
+						series={chartData.map(item => parseInt(item.meta))}
+						labels={chartData.map(item => item.label)}
 						slot="graphic"
 					/>
+					
 					<div slot="data" class="flex w-full pb-4 text-start">
 						<ul class="text-neutral-500 space-y-1 w-full flex flex-col [&_li]:w-full [&_li]:flex [&_li]:flex-row [&_li]:justify-between [&_li]:gap-3 [&_li]:items-start [&_li]:text-neutral-200 [&_li]:text-sm [&_li]:leading-relaxed">
 							{chartData.map((item) => (

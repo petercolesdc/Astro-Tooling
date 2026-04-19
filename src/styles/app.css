@@ -6,10 +6,18 @@ Application specific variables
   --content: 1500px;
   --dashboard: 1600px;
   --glow: 0 0px 24px rgba(255, 255, 255, 0.05);
-  --color-blue-darken: color-mix(in srgb, var(--color-purple), black 80%);
-  --color-purple-darken: color-mix(in srgb, var(--color-purple), black 60%);
-  --color-red-darken: color-mix(in srgb, var(--color-red), black 50%);
+  --color-blue-darken: color-mix(in srgb, var(--color-blue), black 80%);
+  --color-purple-darken: color-mix(in srgb, var(--color-purple), black 80%);
+  --color-red-darken: color-mix(in srgb, var(--color-red), black 99%);
 }
+
+.text-gradient {
+  @apply
+    dark:from-aqua-100
+    dark:via-purple-100
+    dark:to-orange-100;
+}
+
 
 /******************************************
 Fade things in gently
@@ -34,7 +42,6 @@ Fade things in gently
         opacity: 1;
     }
 }
-
 
 /******************************************
 Logo animation
