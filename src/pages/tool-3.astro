@@ -5,9 +5,10 @@ import Header from '../components/scaffold/headerProgress.astro';
 import Card from '../components/cards/imageRadioCheck.astro';
 import CardDrag from '../components/cards/inputDrag.astro';
 import BlockStandard from '../components/blocks/textStandard.astro';
+import RenderImage from "../components/images/utl.astro";
 
 // Assets
-import BgSVG from '../assets/svg/DotMap.svg';
+import BgImage from '../assets/images/bg-nodes-2.png';
 import USEast from "../assets/svg/regions/USA-East.svg";
 import USCentral from "../assets/svg/regions/USA-Central.svg";
 import USWest from "../assets/svg/regions/USA-west.svg";
@@ -85,7 +86,7 @@ const selections = [
 		>
 			<div slot="blockAfter" class="pt-6">
 				<ol id="selection-list" class="space-y-1" aria-label="Selected countries in priority order">
-					{selections.map((item, i) => (
+					{ranges.map((item, i) => (
 						<li class="first:[&_[data-rank]]:bg-yellow 
 							rounded-md
 							focus:outline-0
@@ -109,10 +110,15 @@ const selections = [
 
 	</div>
 	
-	<!-- DotMap -->
-	<BgSVG slot="asideGraphic" preserveAspectRatio="xMinYMid slice" class="text-white/20 h-full opacity-50 relative"/>
+	<RenderImage
+		slot="asideGraphic" 
+		src={BgImage} 
+		priority={true}
+		class="object-cover w-full opacity-50 mix-blend-lighten"
+		alt=""
+	/>
+
 	
 </Layout>
 
 <script type="module" src="/scripts/dragOrder.js"></script>
-<script type="module" src="/scripts/mapGlow.js"></script>

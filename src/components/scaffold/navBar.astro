@@ -5,7 +5,7 @@ const { next = true, previous = true, footer = true, nextUrl, prevUrl } = naviga
 ---
 {footer && (
  <footer class="max-w-[calc(var(--content)_+_var(--spacing)_*_12)] mx-auto fixed z-10 start-0 end-0 bottom-3 w-full px-4 md:px-8">
-    <nav role="navigation" class="bg-black/50 border-2 border-white/5 backdrop-blur-sm p-3 rounded-lg flex flex-row-reverse justify-between items-center shadow-(--glow) lg:py-4 lg:px-6">
+    <nav role="navigation" class="bg-black/50 border-2 border-white/10 backdrop-blur-sm p-3 rounded-lg flex flex-row-reverse justify-between items-center shadow-(--glow) lg:py-4 lg:px-6">
 
     {next && (
         <a href={navigation.nextUrl} class="button button--primary">

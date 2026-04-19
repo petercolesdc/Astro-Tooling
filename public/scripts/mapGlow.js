@@ -47,7 +47,7 @@ function animateNode(node) {
   const to = hexToRgb(randomItem(colors));
 
   /* 🔥 300% slower */
-  const speedMultiplier = 3;
+  const speedMultiplier = 2;
 
   const fadeInDuration = (300 + Math.random() * 400) * speedMultiplier;
   const holdDuration = (200 + Math.random() * 300) * speedMultiplier;
@@ -99,7 +99,7 @@ function init() {
 
   function loop() {
     /* 🔥 slower + softer burst */
-    const burst = Math.floor(Math.random() * 2) + 1;
+    const burst = Math.floor(Math.random() * 5) + 1;
 
     for (let i = 0; i < burst; i++) {
       const node = randomItem(nodes);
@@ -108,7 +108,7 @@ function init() {
 
     /* 🔥 300% slower spawn rate */
     const next =
-      (Math.random() * 180 + 60) * 3;
+      (Math.random() * 180 + 60) * 2;
 
     setTimeout(loop, next);
   }

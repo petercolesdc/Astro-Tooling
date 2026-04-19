@@ -5,6 +5,7 @@ import EQXLogo from '../assets/svg/logo.svg';
 import RenderImage from "../components/images/utl.astro";
 
 // Assets
+import BgSVG from '../assets/svg/DotMap.svg';
 import BgImage from '../assets/images/bg-orb.png';
 import { ArrowRight, CircleCheck } from '@lucide/astro';
 
@@ -25,48 +26,56 @@ const stage = 1;
 	<!-- Main content -->
 	<div slot="content" class="space-y-10 md:space-y-16">
 		<section class="space-y-4">
-			<div class="text-white flex flex-col justify-center overflow-clip w-[145px] pb-2">
+			<div data-transition="drop-in" style="--f-delay: 0;" class="text-white flex flex-col justify-center overflow-clip w-[145px] pb-2">
             	<EQXLogo/>
         	</div>
-			<h1 class="text-xl heading max-w-[62ch] md:text-2xl"><span class="text-gradient">Cloud Connectivity</span> Advisor</h1>
-			<div class="space-y-6 max-w-[52ch] [&_p]:text-pretty [&_p]:text-neutral-200 [&_p]:text-sm [&_p]:leading-relaxed">
+			<h1 
+				data-transition="drop-in" style="--f-delay: 3;"
+				class="text-xl heading max-w-[62ch] md:text-2xl"><span class="text-gradient">Cloud Connectivity</span> Advisor</h1>
+			<div 
+				data-transition="drop-in" style="--f-delay: 6;"
+				class="space-y-6 max-w-[52ch] [&_p]:text-pretty [&_p]:text-neutral-200 [&_p]:text-sm [&_p]:leading-relaxed">
 				<p>Ready to explore your interconnected digital infrastructure strategy? This interactive guide provides a quick and effective way to craft a customized strategy tailored to your organization's unique needs.</p>
 				<ul class="space-y-4 [&_li]:text-pretty [&_li]:text-neutral-200 [&_li]:text-sm [&_li]:leading-relaxed">
-					<li class="flex flex-row items-start gap-3">
+					<li 
+						class="flex flex-row items-start gap-3">
 						<CircleCheck class="text-purple-100 shrink-0" size={24} stroke-width={2} />
 						Complete in less than 10 minutes
 					</li>
-					<li class="flex flex-row items-start gap-3">
+					<li 
+						class="flex flex-row items-start gap-3">
 						<CircleCheck class="text-purple-100 shrink-0" size={24} stroke-width={2} />
 						Downloadable strategy design recommendations
 					</li>
-					<li class="flex flex-row items-start gap-3">
+					<li 
+						class="flex flex-row items-start gap-3">
 						<CircleCheck class="text-purple-100 shrink-0" size={24} stroke-width={2} />
 						Based on 1,643 senior IT leaders
 					</li>
-					<li class="flex flex-row items-start gap-3">
+					<li 
+						class="flex flex-row items-start gap-3">
 						<CircleCheck class="text-purple-100 shrink-0" size={24} stroke-width={2} />
 						Address hybrid multicloud challenges
 					</li>
 				</ul>
 			</div>
 		</section>
-		<a href="/tool-1" class="button button--primary">
+		<a 
+			data-transition="drop-in" style="--f-delay: 9;"
+			href="/tool-1" class="button button--primary">
 			<span class="button__label">Take assessment</span>
 			<span class="button__icon">
 				<ArrowRight size={16} stroke-width={2} />
 			</span>
 		</a>
-		<p class="absolute bottom-10 start-0 px-8 text-xs text-neutral-500 max-w-3xl">Note: This navigator is specifically developed for enterprise organizations. IT service providers, networks or other non-enterprise entities may not receive the most relevant insights.
+		<p 
+			data-transition="drop-in" style="--f-delay: 12;"
+			class="absolute bottom-10 start-0 px-8 text-xs text-neutral-500 max-w-3xl">Note: This navigator is specifically developed for enterprise organizations. IT service providers, networks or other non-enterprise entities may not receive the most relevant insights.
 		</p>
 	</div>
 
-	<!-- Page graphic -->
-	<RenderImage
-		slot="asideGraphic" 
-		src={BgImage} 
-		priority={true}
-		class="object-cover w-full opacity-60 mix-blend-lighten"
-		alt=""
-	/>
+	<!-- DotMap -->
+	<BgSVG slot="asideGraphic" preserveAspectRatio="xMinYMid slice" class="text-white/40 h-full relative"/>
 </Layout>
+
+<script type="module" src="/scripts/mapGlow.js"></script>

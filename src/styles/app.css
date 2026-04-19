@@ -5,7 +5,7 @@ Application specific variables
 :root {
   --content: 1500px;
   --dashboard: 1600px;
-  --glow: 0 0px 24px rgba(255, 255, 255, 0.05);
+  --glow: 0 0px 44px rgba(255, 255, 255, 0.1);
   --color-blue-darken: color-mix(in srgb, var(--color-blue), black 80%);
   --color-purple-darken: color-mix(in srgb, var(--color-purple), black 80%);
   --color-red-darken: color-mix(in srgb, var(--color-red), black 99%);
