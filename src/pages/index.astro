@@ -5,8 +5,7 @@ import EQXLogo from '../assets/svg/logo.svg';
 import RenderImage from "../components/images/utl.astro";
 
 // Assets
-import BgSVG from '../assets/svg/DotMap.svg';
-import BgImage from '../assets/images/bg-orb.png';
+import BgImage from '../assets/images/bg-orb-crop.png';
 import { ArrowRight, CircleCheck } from '@lucide/astro';
 
 // Props
@@ -74,8 +73,17 @@ const stage = 1;
 		</p>
 	</div>
 
+	<!-- Page graphic -->
+	<RenderImage
+		slot="asideGraphic" 
+		src={BgImage} 
+		priority={true}
+		class="object-cover w-full opacity-50 mix-blend-lighten"
+		alt=""
+	/>
+
 	<!-- DotMap -->
-	<BgSVG slot="asideGraphic" preserveAspectRatio="xMinYMid slice" class="text-white/40 h-full relative"/>
+	<!-- <BgSVG slot="asideGraphic" preserveAspectRatio="xMinYMid slice" class="text-white/40 opacity-80 h-[90%] top-[5%] relative"/> -->
 </Layout>
 
-<script type="module" src="/scripts/mapGlow.js"></script>
+<!-- <script type="module" src="/scripts/mapGlow.js"></script> -->

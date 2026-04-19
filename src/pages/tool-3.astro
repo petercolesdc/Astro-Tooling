@@ -24,6 +24,7 @@ import SoutheastAsia from "../assets/svg/regions/Southeast-Asia.svg";
 
 // Props
 const stage = 3;
+
 const ranges = [
 { label: "US East", icon: USEast, delayOffset: "0" },
 { label: "US Central", icon: USCentral, delayOffset: "0.5" },
@@ -37,14 +38,6 @@ const ranges = [
 { label: "Latin America", icon: LatinAmerica, delayOffset: "4.5" },
 { label: "Australia & Oceania", icon: AustraliaOceania, delayOffset: "5" },
 { label: "Southeast Asia", icon: SoutheastAsia, delayOffset: "5.5" },
-];
-
-const selections = [
-  { label: "US East" },
-  { label: "Australia & Oceania" },
-  { label: "Latin America" },
-  { label: "Europe" },
-  { label: "Southeast Asia" },
 ];
 ---
 
@@ -72,6 +65,7 @@ const selections = [
 						<Card 
 							label={item.label} 
 							icon={item.icon} 
+							iconSize="h-20"
 							delayOffset={item.delayOffset}
 						/>
 					))}
@@ -105,6 +99,9 @@ const selections = [
 				</ol>
 				<!-- For screen reader support, announce when item is moved -->
 				<div id="sr-announcer" aria-live="polite" class="sr-only"></div>
+				<div id="placeholder" class="p-8 py-12 rounded-md border-2 border-dotted border-white/20 bg-black/80 text-center text-sm text-neutral-700">
+					Select a region above to begin
+				</div>
 			</div>
 		</BlockStandard>
 
@@ -122,3 +119,4 @@ const selections = [
 </Layout>
 
 <script type="module" src="/scripts/dragOrder.js"></script>
+<script type="module" src="/scripts/regionSelect.js"></script>

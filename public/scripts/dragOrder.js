@@ -155,4 +155,11 @@
 
   // initial sync
   updateRanks();
+
+  // expose a refresh hook
+window.refreshSortableList = () => {
+  items = getItems();
+  items.forEach((el) => (el.draggable = true));
+  updateRanks();
+};
 })();
