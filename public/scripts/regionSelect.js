@@ -26,6 +26,9 @@ function addItem(value) {
   const li = itemMap.get(value);
   if (!li) return;
 
+  // ✅ guarantee it's visible
+  li.classList.remove('hidden');
+
   const index = parseInt(li.dataset.index, 10);
   const children = Array.from(selectionList.children);
 
@@ -35,7 +38,6 @@ function addItem(value) {
 
   selectionList.insertBefore(li, insertBefore || null);
 
-  // 🔥 sync with drag system
   window.refreshSortableList?.();
 }
 
