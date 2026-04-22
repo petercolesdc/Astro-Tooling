@@ -16,7 +16,7 @@ export function mountDonutChart(el: HTMLElement, props: any) {
       type: "donut",
       background: "transparent",
       foreColor: "#e5e7eb",
-      height: 260
+      height: 160
     },
     theme: { mode: "dark" },
     series: props.series,

@@ -2,21 +2,24 @@
 // Layouts and components
 import Layout from '../layouts/dashboard.astro';
 import Header from '../components/scaffold/headerProgress.astro';
-import Input from '../components/forms/input.astro';
-import Select from '../components/forms/select.astro';
+import Gate from '../components/forms/gate.astro';
 import CardBasic from '../components/cards/article.astro';
-import CardSummary from '../components/cards/summary.astro';
 import DonutChart from "../components/charts/donut.astro";
 import BandChart from "../components/charts/band.astro";
+import RadialChart from "../components/charts/radial.astro";
+import RenderImage from "../components/images/utl.astro";
+
 
 // Assets
-import BgImage from '../assets/images/bg-orb.png';
 import LogoAWS from "../assets/svg/logo-aws.svg";
 import LogoAzure from "../assets/svg/logo-azure.svg";
 import LogoGcloud from "../assets/svg/logo-gcloud.svg";
 import LogoOracle from "../assets/svg/logo-oracle.svg";
 import LogoOther from "../assets/svg/logo-otherclouds.svg";
-import { ArrowRight } from '@lucide/astro';
+import World from "../assets/svg/regions/World-by-region.svg";
+import SSImage from '../assets/images/ss-tool-1.png';
+import SSImage2 from '../assets/images/ss-tool-2.png';
+
 
 // Data
 const ranges = [
@@ -28,13 +31,30 @@ const ranges = [
 ];
 
 const chartData = [
-  { label: "Sustainability", color: "bg-aqua", meta: "40%"  },
-  { label: "Productivity", color: "bg-yellow", meta: "35%"  },
-  { label: "Cost", color: "bg-orange", meta: "12%"  },
-  { label: "Security", color: "bg-green", meta: "8%"  },
-  { label: "AI", color: "bg-violet", meta: "5%"  },
+  { label: "Sustainability", color: "bg-aqua", meta: "40%", fade: "opacity-30" },
+  { label: "Productivity", color: "bg-yellow", meta: "35%", fade: "" },
+  { label: "Cost optimization", color: "bg-orange", meta: "12%", fade: "opacity-30"  },
+  { label: "Security", color: "bg-green", meta: "8%", fade: ""  },
+  { label: "AI enablement", color: "bg-violet", meta: "5%", fade: "opacity-30"  },
 ];
 ---
+
+<style is:global>
+	html {
+		 scroll-behavior: smooth;
+	}
+    #USA-East {
+        color: var(--color-aqua);
+    }
+    #USA-West,
+	#Canada,
+	#Europe, 
+    #USA-Central,
+    #Mexico,
+    #Latin-America {
+        color: var(--color-purple-100);
+    }
+</style>
 
 <Layout 
 	title="Tooling app UI"
@@ -42,122 +62,127 @@ const chartData = [
 	contentAlign="justify-start"
 	pageID="dashboard"
 >
-	<Header progress="width: 95%;" sticky={false} slot="header"/>
 
-	<div slot="content" class="space-y-8 flex flex-col items-start xl:space-y-16 xl:gap-4 xl:flex-row">
+<Header progress="width: 95%;" sticky={false} slot="header"/>
+
+<div slot="content" class="space-y-8 pb-8">
 		
-	<!-- Form gateway -->
-		<aside class="flex flex-col w-full justify-between space-y-8 p-6 bg-linear-120 from-blue/30 via-purple/30 to-red/30 rounded-lg border-2 border-white/20 md:p-8 xl:min-h-[640px] xl:w-1/3 xl:sticky xl:top-6">
-			<div class="space-y-8">
-				<header class="space-y-2">
-					<h2 class="text-lg heading">Get your report</h2>
-					<p class="text-sm text-white leading-normal text-balanced">Access the full report based on the information provided in this assessment.</p>
-					 <a href="/tool-4" class="text-link text-link--strong">Edit your answers</a>
-				</header>
-				<fieldset role="group" aria-labelledby="customer-details" class="space-y-6">
-					<legend class="sr-only" id="customer-details">Customer details</legend>
-					<div class="grid grid-cols-2 gap-3">
-						<Input id="given-name" label="Given name"/>
-						<Input id="familiy-name" label="Familiy name"/>
-					</div>
-					<Input id="email" type="email" autocomplete="email" label="Email address"/>
-					<Select id="country" label="Country"/>
-					<Input id="company" label="Company"/>
-					<Input id="role" label="Job title" required={false}/>
-				</fieldset>
+	<!-- Urgency score -->
+	<div class="flex flex-col gap-8 py-4 justify-between items-start lg:gap-16 lg:py-8 lg:items-center lg:flex-row-reverse">
+		<div class="w-full flex flex-col grow-0 items-center justify-center lg:w-120">
+			Chart here
+		</div>
+		<div class="space-y-8 max-w-4xl">
+			<div class="space-y-4">
+				<h1 class="heading text-white text-2xl">Looks like you're an <span class="text-gradient">Interconnection Powerhouse</span>.</h1>
+				<p class="text-sm text-secondary leading-relaxed text-pretty max-w-2xl">Without one connectivity platform, this is likely to be the case and it won't be easy to use the right cloud for the right workload at the right time</p>
 			</div>
-			<button class="button button--primary">
-				<span class="button__label">Generate report</span>
-				<span class="button__icon">
-					<ArrowRight size={16} stroke-width={2} />
-				</span>
-			</button>
-		</aside>
+			<a href="#submit" class="button button--secondary">
+				<span class="button__label">Get full report</span>
+			</a>
+		</div>
+	 </div>
 
 	<!-- Dashboard items -->
-		<div class="flex flex-col w-full space-y-4 pb-8 xl:pb-16 xl:w-2/3">
+	<section class="xl:pb-8 xl:pt-4">
+		<div class="flex flex-row gap-4 items-center">
+			<h2 class="text-base text-white heading">Quick insights</h2>
+			 <a href="/tool-4" class="text-link text-xs text-link--strong">Edit your answers</a> 
+		</div>
 
-		<!-- For one item -->
-			<CardSummary title="Your reach" />
+		<div class="relative flex flex-row flex-nowrap gap-4 py-6 w-full scrollbar overflow-x-auto mask-linear-90 mask-linear-from-99% mask-linear-to-100% [&_article]:w-80 [&_article]:last-of-type:me-2">
 
-		<!-- For 3 items -->
-			<div class="grid grid-cols-1 gap-4 lg:grid-cols-3">
-				<CardBasic 
-					title="Saas and Cloud providers" 
-					description="You're just shy of the industry benchmark of 36"
-				>
-					<div class="" slot="graphic">
-						<h3 class="heading text-gradient text-center text-2xl">70&ndash;120</h3>
-					</div>
-				</CardBasic>
-				<CardBasic title="Critical environments" description="These services were of most importance to you">
-					<div slot="graphic" class="flex flex-row flex-wrap justify-center items-center gap-6">
-						{ranges.map((item) => (
-							<img class={`${item.nudge} ${item.size} ${item.grayscale} w-auto object-contain`}
-                    			src={item.icon.src}
-                    			alt={item.label}
-							/>
-						))}
-					</div>
-				</CardBasic>
-				<CardBasic 
-					title="Your customers" 
-					description="Your user base in around average for the industry"
-					hasNav={true}
-				>
+			<CardBasic 
+				title="Saas and Cloud providers" 
+				description="We recommend you adopt Equinix infrastructure as you are using more than the industry average of 36"
+			>
+				<div class="" slot="graphic">
+					<RadialChart 
+						series={[80]}
+						labels="Customers"
+					/>
+				<h3 class="heading text-gradient text-center text-xl">70&ndash;120</h3>
+			</div>
+			</CardBasic>
+
+
+			<CardBasic 
+				title="Customer density" 
+				description="Your globalization network is large and distributed"
+			>
+				<World slot="graphic" class="w-full h-auto text-neutral-800" />
+
+			</CardBasic>
+
+			<CardBasic 
+				title="Your customers" 
+				description="Your user base is towards the high side of average"
+				hasNav={false}
+			>
 				<div slot="graphic">
 					<BandChart 
 						series={[80]}
 						labels="Customers"
 					/>
-					<h3 class="heading text-aqua text-center text-2xl">10&ndash;50k</h3>
+					<h3 class="heading text-aqua text-center text-xl">10&ndash;50k</h3>
 				</div>
-				</CardBasic>
-			</div>
+			</CardBasic>
 
-		<!-- For 2 items -->
-			<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-				<CardBasic 
-					title="Priorities" 
-					description="Here’s how your priorities compare to industry averages">
-					<DonutChart 
-						series={chartData.map(item => parseInt(item.meta))}
-						labels={chartData.map(item => item.label)}
-						slot="graphic"
-					/>
-					<div slot="data" class="flex w-full pb-4 text-start">
-						<ul class="text-neutral-500 space-y-1 w-full flex flex-col [&_li]:w-full [&_li]:flex [&_li]:flex-row [&_li]:justify-between [&_li]:gap-3 [&_li]:items-start [&_li]:text-neutral-200 [&_li]:text-sm [&_li]:leading-relaxed">
-							{chartData.map((item) => (
-								<li>
-									<span class="flex flex-row items-center gap-3"><span class={`${item.color} size-3 block bg-blue rounded-full`}></span>{item.label}</span>
-									<span>{item.meta}</span>
-								</li>
-							))}
-						</ul>
-					</div>
-				</CardBasic>
-				<CardBasic 
-					title="Drivers" 
-					description="Here’s how your priorities compare to industry averages">
+			<CardBasic 
+				title="Critical environments" 
+				description="You're using several cloud services which makes you a high use candidate"
+			>
+				<div slot="graphic" class="flex flex-row flex-wrap justify-center items-center gap-6">
+					{ranges.map((item) => (
+						<img class={`${item.nudge} ${item.size} ${item.grayscale} w-auto object-contain`}
+							src={item.icon.src}
+							alt={item.label}
+						/>
+					))}
+				</div>
+			</CardBasic>
+
+			<CardBasic 
+				title="Priorities" 
+				description="Your priorities compared to the industry benchmakrs">
 				<DonutChart 
-						series={chartData.map(item => parseInt(item.meta))}
-						labels={chartData.map(item => item.label)}
-						slot="graphic"
-					/>
-					
-					<div slot="data" class="flex w-full pb-4 text-start">
-						<ul class="text-neutral-500 space-y-1 w-full flex flex-col [&_li]:w-full [&_li]:flex [&_li]:flex-row [&_li]:justify-between [&_li]:gap-3 [&_li]:items-start [&_li]:text-neutral-200 [&_li]:text-sm [&_li]:leading-relaxed">
-							{chartData.map((item) => (
-								<li>
-									<span class="flex flex-row items-center gap-3"><span class={`${item.color} size-3 block bg-blue rounded-full`}></span>{item.label}</span>
-									<span>{item.meta}</span>
-								</li>
-							))}
-						</ul>
-					</div>
-				</CardBasic>
-			</div>
+					series={chartData.map(item => parseInt(item.meta))}
+					labels={chartData.map(item => item.label)}
+					slot="graphic"
+				/>
+				<!-- <div slot="data" class="flex w-full pb-4 text-start">
+					<ul class="text-neutral-500 space-y-1 w-full flex flex-col [&_li]:w-full [&_li]:flex [&_li]:flex-row [&_li]:justify-between [&_li]:gap-3 [&_li]:items-start [&_li]:text-neutral-200 [&_li]:text-xs [&_li]:leading-relaxed">
+						{chartData.map((item) => (
+							<li class={`${item.fade}`}>
+								<span class="flex flex-row items-center gap-3"><span class={`${item.color} size-3 block bg-blue rounded-full`}></span>{item.label}</span>
+								<span>{item.meta}</span>
+							</li>
+						))}
+					</ul>
+				</div> -->
+			</CardBasic>
 
 		</div>
-	</div>
+	</section>
+
+	<!-- Form -->
+	 <section class="py-8 flex flex-col gap-24 xl:flex-row">
+			<div class="space-y-8 p-6 bg-linear-120 from-blue/50 via-purple/50 to-red/50 rounded-lg border-2 border-white/20 md:p-8 xl:w-xl">
+				<Gate/>
+			</div>
+		<div class="hidden grid-cols-4 items-start gap-8 grow-1 xl:grid">
+			<div class="col-span-2 col-start-3 h-full bg-black rounded-lg">
+				<div style={`background-image: url(${SSImage.src})`} class="rounded-lg bg-cover relative bg-black/20 flex flex-col h-full p-6">
+					<span class="text-xs z-10 relative block w-44 -translate-x-1/2 rounded-sm border border-white/20 text-white p-4 bg-black/50 backdrop-blur-md">Some descriptive text or feature highlight to help sell the report</span>
+				</div>
+			</div>
+			<div class="col-span-2 col-start-1 h-full bg-black rounded-lg">
+				<div style={`background-image: url(${SSImage2.src})`} class="rounded-lg bg-cover relative bg-black/20 flex flex-col items-end h-full p-6">
+					<span class="text-xs z-10 relative block w-44 translate-x-1/2 rounded-sm border border-white/20 text-white p-4 bg-black/50 backdrop-blur-md">Some descriptive text or feature highlight to help sell the report</span>
+				</div>
+			</div>
+		</div>
+	</section>
+
+</div>
 </Layout>

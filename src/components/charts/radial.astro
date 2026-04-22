@@ -1,0 +1,26 @@
+---
+const { series, labels, height } = Astro.props;
+---
+
+<radial-chart
+  data-series={JSON.stringify(series)}
+  data-labels={JSON.stringify(labels)}
+  data-height={height}
+>
+</radial-chart>
+
+<script>
+  import { mountSemiCircleChart } from './radial.client';
+
+  class RadialChart extends HTMLElement {
+    connectedCallback() {
+      const series = JSON.parse(this.dataset.series || '[]');
+      const labels = JSON.parse(this.dataset.labels || '[]');
+      const height = Number(this.dataset.height || 220);
+      
+      mountSemiCircleChart(this, { series, labels, height });
+    }
+  }
+
+  customElements.define('radial-chart', RadialChart);
+</script>

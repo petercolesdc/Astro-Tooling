@@ -8,7 +8,7 @@ import { ChevronLeft, ChevronRight } from '@lucide/astro';
 // Props
 const { title, description, hasNav=false, hasTabs=false } = Astro.props;
 ---
-<article id={slugger(title)} class="flex flex-col gap-6 justify-between items-center text-center bg-black/50 backdrop-blur-sm border-2 border-white/20 p-8 rounded-md w-full h-auto">
+<article id={slugger(title)} class="flex flex-col shrink-0 grow-0 gap-6 justify-between items-center text-center bg-black/50 backdrop-blur-sm border-2 border-white/20 p-8 rounded-md w-full h-auto">
     <header class="flex flex-row items-center justify-between gap-4 w-full">
         { hasNav && 
         <button aria-label="Previous panel" class="flex shrink-0 grow-0 cursor-pointer text-white hover:text-purple-100 focus:text-purple-100 -translate-x-2">

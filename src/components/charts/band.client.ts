@@ -22,7 +22,7 @@ export function mountBarChart(el: HTMLElement, props: RadialChartProps) {
       sparkline: {
         enabled: true
       },
-      height: 220,
+      height: 180,
     },
     series,
     colors,
